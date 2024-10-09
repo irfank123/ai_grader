@@ -194,10 +194,5 @@ We love contributions! Feel free to **open a pull request** or **raise an issue*
 
 ---
 
-## **License** 📄
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
-
----
-
 Thanks for checking out the **AI-Powered Pre-Calculus Certification System**! Happy learning 🧘‍♂️🤓!
 
