@@ -1,7 +1,3 @@
-Here's a detailed `README.md` file for your **AI-powered Pre-Calculus Certification System** project:
-
----
-
 # **AI-Powered Pre-Calculus Certification System**
 
 ## **Overview**
@@ -208,10 +204,5 @@ If you would like to contribute to the project, feel free to open a pull request
 
 ---
 
-## **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 This `README.md` provides a comprehensive guide for anyone working on or interacting with the project. It includes the structure, database design, setup instructions, and more. Let me know if you need further modifications!
