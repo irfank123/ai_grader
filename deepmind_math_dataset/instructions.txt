@@ -1,0 +1,88 @@
+Instructions for DeepMind Math Dataset
+
+This folder contains scripts for generating questions and exams based on the DeepMind math dataset and uploading them to a MongoDB database.
+Prerequisites
+
+    Python 3.x installed on your machine.
+    MongoDB Atlas or another MongoDB instance set up.
+    A virtual environment to manage dependencies.
+
+Setup
+
+    Clone the Repository:
+
+    bash
+
+git clone https://github.com/your-repo-url
+cd your-repo-folder
+
+Create a Virtual Environment: Inside the deepmind_math_dataset folder, run the following command to create a virtual environment:
+
+bash
+
+python -m venv venv
+
+Activate the Virtual Environment:
+
+    On Windows:
+
+    bash
+
+venv\Scripts\activate
+
+On macOS/Linux:
+
+bash
+
+    source venv/bin/activate
+
+Install Required Packages: Once the environment is activated, install the necessary dependencies by running:
+
+bash
+
+pip install -r requirements.txt
+
+Configure MongoDB:
+
+    Create a .env file in the root directory (same level as deepmind_math_dataset) containing your MongoDB URI:
+
+    php
+
+        MONGO_URI=mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority&appName=yourAppName
+
+Generating and Uploading Data
+Generating Questions
+
+    Generate Questions: Run the following script to generate questions and upload them to the Questions collection in the MongoDB:
+
+    bash
+
+    python generate_questions.py
+
+    This script will:
+        Generate 300 questions and store them in the Questions collection.
+        Log details about the generation and insertion process.
+
+Generating Exams
+
+    Generate Exams: Run the following script to generate exams and upload them to the Exams collection:
+
+    bash
+
+    python generate_exams.py
+
+    This script will:
+        Fetch existing questions from the Questions collection.
+        Randomly assign questions from different modules into exams.
+        Insert the exams into the Exams collection in the MongoDB.
+
+Important Notes
+
+    Database Structure:
+        Questions collection: Stores individual questions with fields such as question, answer, and module.
+        Exams collection: Stores exams with an array of question IDs (referencing questions from the Questions collection).
+    Logging:
+        All scripts log the process (including errors) to the terminal, making it easy to troubleshoot issues.
+
+
+
