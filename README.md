@@ -103,7 +103,7 @@ Our **Flask** backend provides the following API endpoints:
 
 Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections used in our AI-powered Pre-Calculus Certification System.
 
-![ER Diagram](./diagrams/ER-diagram.png)
+![ER Diagram](./diagrams/ER_diagram.png)
 
 ---
 

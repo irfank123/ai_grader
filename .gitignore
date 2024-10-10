@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders
+env/
+venv/
+.venv/
+
+# Flask instance folder and environment variables
+instance/
+.env
+
+# Flask logs
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# Python cache
+*.cache
+.cache/
+
+# Django database, logs, and compiled files
+db.sqlite3
+db.sqlite3-journal
+
+# SQLite backup files
+*.sqlite3
+
+# pipenv environment files
+Pipfile
+Pipfile.lock
+
+# Docker files
+*.docker
+docker-compose.yml
+
+# Node.js / React dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# macOS specific files
+.DS_Store
+
