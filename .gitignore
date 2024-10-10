@@ -1,10 +1,11 @@
 
 # Ignore virtual environments
 venv/
+*.pyc
+__pycache__/
 
 # Ignore environment variable files
 .env
 
 # Ignore generated files
 generated_questions.csv
->>>>>>> 3fcc16d (added .git ignore)
