@@ -1,5 +1,3 @@
----
-
 # **Ethics Guidelines for AI-Powered Pre-Calculus Certification System**
 
 ## **Purpose of Data Collection** 📊
