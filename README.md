@@ -1,8 +1,8 @@
-# **AI-Powered Pre-Calculus Certification System** 🌱🧪
+# **AI-Powered Pre-Calculus Grading System** 🌱🧪
 
 ## **Overview** 📖
 
-Welcome to our **AI-powered Pre-Calculus Certification System**! ✨ This project is designed to help students practice and certify their Pre-Calculus knowledge with the help of **AI**. Students can take exams, submit their answers (both written and spoken 🎤), and get instant feedback. It's like having your own personal math coach 👨‍🏫!
+Welcome to our **AI-powered Pre-Calculus Grading System**! ✨ This project is designed to help students practice and certify their Pre-Calculus knowledge with the help of **AI**. Students can take exams, submit their answers (both written and spoken 🎤), and get instant feedback. It's like having your own personal math coach 👨‍🏫!
 
 ### **Features** 🥇
 - Store a collection of **Pre-Calculus questions** 🧐.
@@ -101,7 +101,7 @@ Our **Flask** backend provides the following API endpoints:
 
 ## **Entity Relationship Diagram** 📊
 
-Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections used in our AI-powered Pre-Calculus Certification System.
+Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections used in our AI-powered Pre-Calculus Grading System.
 
 ![ER Diagram](./diagrams/ER_diagram.png)
 
@@ -202,4 +202,4 @@ We love contributions! Feel free to **open a pull request** or **raise an issue*
 
 ---
 
-Thanks for checking out the **AI-Powered Pre-Calculus Certification System**! Happy learning 🧘‍♂️🤓!
+Thanks for checking out the **AI-Powered Pre-Calculus Grading System**! Happy learning 🧘‍♂️🤓!

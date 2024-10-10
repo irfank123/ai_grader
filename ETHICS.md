@@ -1,8 +1,8 @@
-# **Ethics Guidelines for AI-Powered Pre-Calculus Certification System**
+# **Ethics Guidelines for AI-Powered Pre-Calculus Grading System**
 
 ## **Purpose of Data Collection** 📊
 
-The **AI-Powered Pre-Calculus Certification System** collects data solely for **educational** and **research** purposes. This data is used to:
+The **AI-Powered Pre-Calculus Grading System** collects data solely for **educational** and **research** purposes. This data is used to:
 - Provide personalized feedback to students who submit Pre-Calculus answers.
 - Enhance the AI grading model by improving its accuracy and response capabilities.
 - Ensure the system can handle different types of questions, answers, and explanations (both written and spoken).
