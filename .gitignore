@@ -9,3 +9,5 @@ __pycache__/
 
 # Ignore generated files
 generated_questions.csv
+
+.DS_Store
