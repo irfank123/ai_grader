@@ -1,0 +1,738 @@
+{
+	"info": {
+		"_postman_id": "cecf4b67-fba8-4d1d-bc86-811432133c05",
+		"name": "AI Grader",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31356431"
+	},
+	"item": [
+		{
+			"name": "Get All Questions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/questions/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/questions/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10f11-hbkZNArfIkBO6TOIxyntBKNxuKg\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Oct 2024 03:55:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"670754be00d65fe8204133d2\",\n        \"question\": \"Solve 2*x = 4 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133dd\",\n        \"question\": \"Solve 13*x = 26 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133de\",\n        \"question\": \"Solve 14*x = 28 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d3\",\n        \"question\": \"Solve 3*x = 6 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d4\",\n        \"question\": \"Solve 4*x = 8 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ef\",\n        \"question\": \"Solve 31*x = 62 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e7\",\n        \"question\": \"Solve 23*x = 46 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e5\",\n        \"question\": \"Solve 21*x = 42 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d8\",\n        \"question\": \"Solve 8*x = 16 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d1\",\n        \"question\": \"Solve 1*x = 2 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d7\",\n        \"question\": \"Solve 7*x = 14 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f3\",\n        \"question\": \"Solve 35*x = 70 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f2\",\n        \"question\": \"Solve 34*x = 68 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133da\",\n        \"question\": \"Solve 10*x = 20 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133db\",\n        \"question\": \"Solve 11*x = 22 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f0\",\n        \"question\": \"Solve 32*x = 64 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e6\",\n        \"question\": \"Solve 22*x = 44 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413401\",\n        \"question\": \"Solve 49*x = 98 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413406\",\n        \"question\": \"Solve 54*x = 108 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413409\",\n        \"question\": \"Solve 57*x = 114 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342c\",\n        \"question\": \"Solve 92*x = 184 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413431\",\n        \"question\": \"Solve 97*x = 194 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343e\",\n        \"question\": \"Solve 110*x = 220 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344c\",\n        \"question\": \"Solve 124*x = 248 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346d\",\n        \"question\": \"Solve 157*x = 314 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347d\",\n        \"question\": \"Solve 173*x = 346 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348b\",\n        \"question\": \"Solve 187*x = 374 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349f\",\n        \"question\": \"Solve 207*x = 414 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b9\",\n        \"question\": \"Solve 233*x = 466 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c1\",\n        \"question\": \"Solve 241*x = 482 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e9\",\n        \"question\": \"Solve 281*x = 562 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f2\",\n        \"question\": \"Solve 290*x = 580 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134fc\",\n        \"question\": \"Solve 300*x = 600 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e9\",\n        \"question\": \"Solve 25*x = 50 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133eb\",\n        \"question\": \"Solve 27*x = 54 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413421\",\n        \"question\": \"Solve 81*x = 162 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413422\",\n        \"question\": \"Solve 82*x = 164 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413443\",\n        \"question\": \"Solve 115*x = 230 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413446\",\n        \"question\": \"Solve 118*x = 236 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413482\",\n        \"question\": \"Solve 178*x = 356 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413484\",\n        \"question\": \"Solve 180*x = 360 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349d\",\n        \"question\": \"Solve 205*x = 410 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a4\",\n        \"question\": \"Solve 212*x = 424 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b7\",\n        \"question\": \"Solve 231*x = 462 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f0\",\n        \"question\": \"Solve 288*x = 576 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f5\",\n        \"question\": \"Solve 37*x = 74 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413405\",\n        \"question\": \"Solve 53*x = 106 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413408\",\n        \"question\": \"Solve 56*x = 112 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413414\",\n        \"question\": \"Solve 68*x = 136 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341b\",\n        \"question\": \"Solve 75*x = 150 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341c\",\n        \"question\": \"Solve 76*x = 152 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341d\",\n        \"question\": \"Solve 77*x = 154 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413437\",\n        \"question\": \"Solve 103*x = 206 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413447\",\n        \"question\": \"Solve 119*x = 238 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413450\",\n        \"question\": \"Solve 128*x = 256 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413461\",\n        \"question\": \"Solve 145*x = 290 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413465\",\n        \"question\": \"Solve 149*x = 298 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413467\",\n        \"question\": \"Solve 151*x = 302 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349a\",\n        \"question\": \"Solve 202*x = 404 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a9\",\n        \"question\": \"Solve 217*x = 434 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134cb\",\n        \"question\": \"Solve 251*x = 502 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134cd\",\n        \"question\": \"Solve 253*x = 506 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e4\",\n        \"question\": \"Solve 276*x = 552 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ef\",\n        \"question\": \"Solve 287*x = 574 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f5\",\n        \"question\": \"Solve 293*x = 586 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133dc\",\n        \"question\": \"Solve 12*x = 24 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413411\",\n        \"question\": \"Solve 65*x = 130 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413430\",\n        \"question\": \"Solve 96*x = 192 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345e\",\n        \"question\": \"Solve 142*x = 284 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413477\",\n        \"question\": \"Solve 167*x = 334 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413497\",\n        \"question\": \"Solve 199*x = 398 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b3\",\n        \"question\": \"Solve 227*x = 454 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b5\",\n        \"question\": \"Solve 229*x = 458 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d3\",\n        \"question\": \"Solve 259*x = 518 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d4\",\n        \"question\": \"Solve 260*x = 520 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e2\",\n        \"question\": \"Solve 274*x = 548 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e6\",\n        \"question\": \"Solve 278*x = 556 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134fb\",\n        \"question\": \"Solve 299*x = 598 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f9\",\n        \"question\": \"Solve 41*x = 82 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133fe\",\n        \"question\": \"Solve 46*x = 92 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413412\",\n        \"question\": \"Solve 66*x = 132 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344e\",\n        \"question\": \"Solve 126*x = 252 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344f\",\n        \"question\": \"Solve 127*x = 254 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413454\",\n        \"question\": \"Solve 132*x = 264 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413456\",\n        \"question\": \"Solve 134*x = 268 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345b\",\n        \"question\": \"Solve 139*x = 278 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413463\",\n        \"question\": \"Solve 147*x = 294 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413471\",\n        \"question\": \"Solve 161*x = 322 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413476\",\n        \"question\": \"Solve 166*x = 332 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347e\",\n        \"question\": \"Solve 174*x = 348 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413483\",\n        \"question\": \"Solve 179*x = 358 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413493\",\n        \"question\": \"Solve 195*x = 390 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a2\",\n        \"question\": \"Solve 210*x = 420 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a5\",\n        \"question\": \"Solve 213*x = 426 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b1\",\n        \"question\": \"Solve 225*x = 450 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b4\",\n        \"question\": \"Solve 228*x = 456 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c4\",\n        \"question\": \"Solve 244*x = 488 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d1\",\n        \"question\": \"Solve 257*x = 514 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d9\",\n        \"question\": \"Solve 265*x = 530 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e5\",\n        \"question\": \"Solve 277*x = 554 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e1\",\n        \"question\": \"Solve 17*x = 34 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413402\",\n        \"question\": \"Solve 50*x = 100 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413404\",\n        \"question\": \"Solve 52*x = 104 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413415\",\n        \"question\": \"Solve 69*x = 138 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341f\",\n        \"question\": \"Solve 79*x = 158 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413426\",\n        \"question\": \"Solve 86*x = 172 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342b\",\n        \"question\": \"Solve 91*x = 182 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413444\",\n        \"question\": \"Solve 116*x = 232 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344b\",\n        \"question\": \"Solve 123*x = 246 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413457\",\n        \"question\": \"Solve 135*x = 270 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346b\",\n        \"question\": \"Solve 155*x = 310 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413489\",\n        \"question\": \"Solve 185*x = 370 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413494\",\n        \"question\": \"Solve 196*x = 392 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134cf\",\n        \"question\": \"Solve 255*x = 510 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134dc\",\n        \"question\": \"Solve 268*x = 536 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e0\",\n        \"question\": \"Solve 16*x = 32 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e3\",\n        \"question\": \"Solve 19*x = 38 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340c\",\n        \"question\": \"Solve 60*x = 120 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413436\",\n        \"question\": \"Solve 102*x = 204 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413445\",\n        \"question\": \"Solve 117*x = 234 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413452\",\n        \"question\": \"Solve 130*x = 260 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345f\",\n        \"question\": \"Solve 143*x = 286 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413473\",\n        \"question\": \"Solve 163*x = 326 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413474\",\n        \"question\": \"Solve 164*x = 328 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413479\",\n        \"question\": \"Solve 169*x = 338 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347b\",\n        \"question\": \"Solve 171*x = 342 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348a\",\n        \"question\": \"Solve 186*x = 372 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a3\",\n        \"question\": \"Solve 211*x = 422 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ad\",\n        \"question\": \"Solve 221*x = 442 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134af\",\n        \"question\": \"Solve 223*x = 446 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e0\",\n        \"question\": \"Solve 272*x = 544 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e1\",\n        \"question\": \"Solve 273*x = 546 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ea\",\n        \"question\": \"Solve 282*x = 564 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f7\",\n        \"question\": \"Solve 295*x = 590 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ed\",\n        \"question\": \"Solve 29*x = 58 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ee\",\n        \"question\": \"Solve 30*x = 60 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133fb\",\n        \"question\": \"Solve 43*x = 86 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413407\",\n        \"question\": \"Solve 55*x = 110 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413441\",\n        \"question\": \"Solve 113*x = 226 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413458\",\n        \"question\": \"Solve 136*x = 272 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413466\",\n        \"question\": \"Solve 150*x = 300 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346c\",\n        \"question\": \"Solve 156*x = 312 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348c\",\n        \"question\": \"Solve 188*x = 376 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349e\",\n        \"question\": \"Solve 206*x = 412 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a0\",\n        \"question\": \"Solve 208*x = 416 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ae\",\n        \"question\": \"Solve 222*x = 444 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c8\",\n        \"question\": \"Solve 248*x = 496 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134cc\",\n        \"question\": \"Solve 252*x = 504 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d5\",\n        \"question\": \"Solve 261*x = 522 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e8\",\n        \"question\": \"Solve 280*x = 560 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e2\",\n        \"question\": \"Solve 18*x = 36 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ea\",\n        \"question\": \"Solve 26*x = 52 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133fa\",\n        \"question\": \"Solve 42*x = 84 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413400\",\n        \"question\": \"Solve 48*x = 96 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341a\",\n        \"question\": \"Solve 74*x = 148 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343b\",\n        \"question\": \"Solve 107*x = 214 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413464\",\n        \"question\": \"Solve 148*x = 296 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413481\",\n        \"question\": \"Solve 177*x = 354 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348f\",\n        \"question\": \"Solve 191*x = 382 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ab\",\n        \"question\": \"Solve 219*x = 438 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ac\",\n        \"question\": \"Solve 220*x = 440 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c5\",\n        \"question\": \"Solve 245*x = 490 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ff\",\n        \"question\": \"Solve 47*x = 94 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340a\",\n        \"question\": \"Solve 58*x = 116 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413418\",\n        \"question\": \"Solve 72*x = 144 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342a\",\n        \"question\": \"Solve 90*x = 180 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342d\",\n        \"question\": \"Solve 93*x = 186 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413438\",\n        \"question\": \"Solve 104*x = 208 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343a\",\n        \"question\": \"Solve 106*x = 212 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413440\",\n        \"question\": \"Solve 112*x = 224 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413451\",\n        \"question\": \"Solve 129*x = 258 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413453\",\n        \"question\": \"Solve 131*x = 262 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413455\",\n        \"question\": \"Solve 133*x = 266 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345a\",\n        \"question\": \"Solve 138*x = 276 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346a\",\n        \"question\": \"Solve 154*x = 308 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346e\",\n        \"question\": \"Solve 158*x = 316 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413472\",\n        \"question\": \"Solve 162*x = 324 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347c\",\n        \"question\": \"Solve 172*x = 344 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349c\",\n        \"question\": \"Solve 204*x = 408 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d2\",\n        \"question\": \"Solve 258*x = 516 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e7\",\n        \"question\": \"Solve 279*x = 558 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134eb\",\n        \"question\": \"Solve 283*x = 566 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f3\",\n        \"question\": \"Solve 291*x = 582 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f8\",\n        \"question\": \"Solve 40*x = 80 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340e\",\n        \"question\": \"Solve 62*x = 124 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413413\",\n        \"question\": \"Solve 67*x = 134 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413427\",\n        \"question\": \"Solve 87*x = 174 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342f\",\n        \"question\": \"Solve 95*x = 190 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413460\",\n        \"question\": \"Solve 144*x = 288 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413469\",\n        \"question\": \"Solve 153*x = 306 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041346f\",\n        \"question\": \"Solve 159*x = 318 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413470\",\n        \"question\": \"Solve 160*x = 320 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347a\",\n        \"question\": \"Solve 170*x = 340 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413492\",\n        \"question\": \"Solve 194*x = 388 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a1\",\n        \"question\": \"Solve 209*x = 418 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a7\",\n        \"question\": \"Solve 215*x = 430 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b2\",\n        \"question\": \"Solve 226*x = 452 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c0\",\n        \"question\": \"Solve 240*x = 480 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c2\",\n        \"question\": \"Solve 242*x = 484 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ce\",\n        \"question\": \"Solve 254*x = 508 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ee\",\n        \"question\": \"Solve 286*x = 572 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f4\",\n        \"question\": \"Solve 292*x = 584 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f4\",\n        \"question\": \"Solve 36*x = 72 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340b\",\n        \"question\": \"Solve 59*x = 118 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413423\",\n        \"question\": \"Solve 83*x = 166 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413424\",\n        \"question\": \"Solve 84*x = 168 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413428\",\n        \"question\": \"Solve 88*x = 176 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413435\",\n        \"question\": \"Solve 101*x = 202 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413448\",\n        \"question\": \"Solve 120*x = 240 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345c\",\n        \"question\": \"Solve 140*x = 280 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041345d\",\n        \"question\": \"Solve 141*x = 282 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413468\",\n        \"question\": \"Solve 152*x = 304 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413488\",\n        \"question\": \"Solve 184*x = 368 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348e\",\n        \"question\": \"Solve 190*x = 380 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413498\",\n        \"question\": \"Solve 200*x = 400 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a8\",\n        \"question\": \"Solve 216*x = 432 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b0\",\n        \"question\": \"Solve 224*x = 448 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ba\",\n        \"question\": \"Solve 234*x = 468 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d0\",\n        \"question\": \"Solve 256*x = 512 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134df\",\n        \"question\": \"Solve 271*x = 542 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ec\",\n        \"question\": \"Solve 284*x = 568 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133fc\",\n        \"question\": \"Solve 44*x = 88 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413403\",\n        \"question\": \"Solve 51*x = 102 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413419\",\n        \"question\": \"Solve 73*x = 146 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413432\",\n        \"question\": \"Solve 98*x = 196 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413434\",\n        \"question\": \"Solve 100*x = 200 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343f\",\n        \"question\": \"Solve 111*x = 222 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413459\",\n        \"question\": \"Solve 137*x = 274 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413496\",\n        \"question\": \"Solve 198*x = 396 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041349b\",\n        \"question\": \"Solve 203*x = 406 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134a6\",\n        \"question\": \"Solve 214*x = 428 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134aa\",\n        \"question\": \"Solve 218*x = 436 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134bb\",\n        \"question\": \"Solve 235*x = 470 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134be\",\n        \"question\": \"Solve 238*x = 476 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c3\",\n        \"question\": \"Solve 243*x = 486 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d8\",\n        \"question\": \"Solve 264*x = 528 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134dd\",\n        \"question\": \"Solve 269*x = 538 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ed\",\n        \"question\": \"Solve 285*x = 570 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f1\",\n        \"question\": \"Solve 289*x = 578 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f8\",\n        \"question\": \"Solve 296*x = 592 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f9\",\n        \"question\": \"Solve 297*x = 594 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134fa\",\n        \"question\": \"Solve 298*x = 596 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f7\",\n        \"question\": \"Solve 39*x = 78 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413416\",\n        \"question\": \"Solve 70*x = 140 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041341e\",\n        \"question\": \"Solve 78*x = 156 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413425\",\n        \"question\": \"Solve 85*x = 170 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413439\",\n        \"question\": \"Solve 105*x = 210 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413442\",\n        \"question\": \"Solve 114*x = 228 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413462\",\n        \"question\": \"Solve 146*x = 292 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413475\",\n        \"question\": \"Solve 165*x = 330 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413478\",\n        \"question\": \"Solve 168*x = 336 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413480\",\n        \"question\": \"Solve 176*x = 352 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413485\",\n        \"question\": \"Solve 181*x = 362 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413486\",\n        \"question\": \"Solve 182*x = 364 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413487\",\n        \"question\": \"Solve 183*x = 366 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041348d\",\n        \"question\": \"Solve 189*x = 378 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413499\",\n        \"question\": \"Solve 201*x = 402 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c6\",\n        \"question\": \"Solve 246*x = 492 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c7\",\n        \"question\": \"Solve 247*x = 494 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134c9\",\n        \"question\": \"Solve 249*x = 498 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134f6\",\n        \"question\": \"Solve 294*x = 588 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133df\",\n        \"question\": \"Solve 15*x = 30 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133ec\",\n        \"question\": \"Solve 28*x = 56 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f1\",\n        \"question\": \"Solve 33*x = 66 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133f6\",\n        \"question\": \"Solve 38*x = 76 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340d\",\n        \"question\": \"Solve 61*x = 122 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413417\",\n        \"question\": \"Solve 71*x = 142 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413420\",\n        \"question\": \"Solve 80*x = 160 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413433\",\n        \"question\": \"Solve 99*x = 198 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343d\",\n        \"question\": \"Solve 109*x = 218 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344d\",\n        \"question\": \"Solve 125*x = 250 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413490\",\n        \"question\": \"Solve 192*x = 384 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413491\",\n        \"question\": \"Solve 193*x = 386 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413495\",\n        \"question\": \"Solve 197*x = 394 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b6\",\n        \"question\": \"Solve 230*x = 460 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134b8\",\n        \"question\": \"Solve 232*x = 464 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d7\",\n        \"question\": \"Solve 263*x = 526 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134da\",\n        \"question\": \"Solve 266*x = 532 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134db\",\n        \"question\": \"Solve 267*x = 534 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d5\",\n        \"question\": \"Solve 5*x = 10 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d6\",\n        \"question\": \"Solve 6*x = 12 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133d9\",\n        \"question\": \"Solve 9*x = 18 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e4\",\n        \"question\": \"Solve 20*x = 40 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133e8\",\n        \"question\": \"Solve 24*x = 48 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204133fd\",\n        \"question\": \"Solve 45*x = 90 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041340f\",\n        \"question\": \"Solve 63*x = 126 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413410\",\n        \"question\": \"Solve 64*x = 128 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413429\",\n        \"question\": \"Solve 89*x = 178 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041342e\",\n        \"question\": \"Solve 94*x = 188 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041343c\",\n        \"question\": \"Solve 108*x = 216 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe820413449\",\n        \"question\": \"Solve 121*x = 242 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041344a\",\n        \"question\": \"Solve 122*x = 244 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe82041347f\",\n        \"question\": \"Solve 175*x = 350 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134bc\",\n        \"question\": \"Solve 236*x = 472 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134bd\",\n        \"question\": \"Solve 237*x = 474 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134bf\",\n        \"question\": \"Solve 239*x = 478 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134ca\",\n        \"question\": \"Solve 250*x = 500 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134d6\",\n        \"question\": \"Solve 262*x = 524 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134de\",\n        \"question\": \"Solve 270*x = 540 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"670754be00d65fe8204134e3\",\n        \"question\": \"Solve 275*x = 550 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6592\",\n        \"question\": \"Solve 1*x = 2 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6597\",\n        \"question\": \"Solve 6*x = 12 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6596\",\n        \"question\": \"Solve 5*x = 10 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659f\",\n        \"question\": \"Solve 14*x = 28 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6593\",\n        \"question\": \"Solve 2*x = 4 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6595\",\n        \"question\": \"Solve 4*x = 8 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6594\",\n        \"question\": \"Solve 3*x = 6 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659d\",\n        \"question\": \"Solve 12*x = 24 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ac\",\n        \"question\": \"Solve 27*x = 54 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ad\",\n        \"question\": \"Solve 28*x = 56 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ba\",\n        \"question\": \"Solve 41*x = 82 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65bb\",\n        \"question\": \"Solve 42*x = 84 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a0\",\n        \"question\": \"Solve 15*x = 30 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a4\",\n        \"question\": \"Solve 19*x = 38 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a5\",\n        \"question\": \"Solve 20*x = 40 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a7\",\n        \"question\": \"Solve 22*x = 44 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ae\",\n        \"question\": \"Solve 29*x = 58 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c1\",\n        \"question\": \"Solve 48*x = 96 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c5\",\n        \"question\": \"Solve 52*x = 104 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ca\",\n        \"question\": \"Solve 57*x = 114 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6598\",\n        \"question\": \"Solve 7*x = 14 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a2\",\n        \"question\": \"Solve 17*x = 34 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b7\",\n        \"question\": \"Solve 38*x = 76 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b9\",\n        \"question\": \"Solve 40*x = 80 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65bc\",\n        \"question\": \"Solve 43*x = 86 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65bd\",\n        \"question\": \"Solve 44*x = 88 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65bf\",\n        \"question\": \"Solve 46*x = 92 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b4\",\n        \"question\": \"Solve 35*x = 70 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b5\",\n        \"question\": \"Solve 36*x = 72 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b6\",\n        \"question\": \"Solve 37*x = 74 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b8\",\n        \"question\": \"Solve 39*x = 78 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65cc\",\n        \"question\": \"Solve 59*x = 118 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d1\",\n        \"question\": \"Solve 64*x = 128 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659b\",\n        \"question\": \"Solve 10*x = 20 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659c\",\n        \"question\": \"Solve 11*x = 22 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65af\",\n        \"question\": \"Solve 30*x = 60 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b2\",\n        \"question\": \"Solve 33*x = 66 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65cb\",\n        \"question\": \"Solve 58*x = 116 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65cd\",\n        \"question\": \"Solve 60*x = 120 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659e\",\n        \"question\": \"Solve 13*x = 26 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a8\",\n        \"question\": \"Solve 23*x = 46 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b0\",\n        \"question\": \"Solve 31*x = 62 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b1\",\n        \"question\": \"Solve 32*x = 64 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c7\",\n        \"question\": \"Solve 54*x = 108 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c9\",\n        \"question\": \"Solve 56*x = 112 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65cf\",\n        \"question\": \"Solve 62*x = 124 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a1\",\n        \"question\": \"Solve 16*x = 32 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a6\",\n        \"question\": \"Solve 21*x = 42 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a9\",\n        \"question\": \"Solve 24*x = 48 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ab\",\n        \"question\": \"Solve 26*x = 52 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65b3\",\n        \"question\": \"Solve 34*x = 68 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c0\",\n        \"question\": \"Solve 47*x = 94 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c2\",\n        \"question\": \"Solve 49*x = 98 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c3\",\n        \"question\": \"Solve 50*x = 100 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c6\",\n        \"question\": \"Solve 53*x = 106 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c8\",\n        \"question\": \"Solve 55*x = 110 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ce\",\n        \"question\": \"Solve 61*x = 122 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d0\",\n        \"question\": \"Solve 63*x = 126 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6599\",\n        \"question\": \"Solve 8*x = 16 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e659a\",\n        \"question\": \"Solve 9*x = 18 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65a3\",\n        \"question\": \"Solve 18*x = 36 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65aa\",\n        \"question\": \"Solve 25*x = 50 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65be\",\n        \"question\": \"Solve 45*x = 90 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65c4\",\n        \"question\": \"Solve 51*x = 102 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d9\",\n        \"question\": \"Solve 72*x = 144 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d6\",\n        \"question\": \"Solve 69*x = 138 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e0\",\n        \"question\": \"Solve 79*x = 158 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f1\",\n        \"question\": \"Solve 96*x = 192 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f2\",\n        \"question\": \"Solve 97*x = 194 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f4\",\n        \"question\": \"Solve 99*x = 198 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f9\",\n        \"question\": \"Solve 104*x = 208 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65fe\",\n        \"question\": \"Solve 109*x = 218 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e1\",\n        \"question\": \"Solve 80*x = 160 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e4\",\n        \"question\": \"Solve 83*x = 166 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f3\",\n        \"question\": \"Solve 98*x = 196 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65fa\",\n        \"question\": \"Solve 105*x = 210 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65fc\",\n        \"question\": \"Solve 107*x = 214 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6605\",\n        \"question\": \"Solve 116*x = 232 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6606\",\n        \"question\": \"Solve 117*x = 234 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660d\",\n        \"question\": \"Solve 124*x = 248 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d4\",\n        \"question\": \"Solve 67*x = 134 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d2\",\n        \"question\": \"Solve 65*x = 130 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d3\",\n        \"question\": \"Solve 66*x = 132 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ef\",\n        \"question\": \"Solve 94*x = 188 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f0\",\n        \"question\": \"Solve 95*x = 190 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ff\",\n        \"question\": \"Solve 110*x = 220 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660f\",\n        \"question\": \"Solve 126*x = 252 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d7\",\n        \"question\": \"Solve 70*x = 140 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65dc\",\n        \"question\": \"Solve 75*x = 150 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e5\",\n        \"question\": \"Solve 84*x = 168 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ec\",\n        \"question\": \"Solve 91*x = 182 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6600\",\n        \"question\": \"Solve 111*x = 222 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6602\",\n        \"question\": \"Solve 113*x = 226 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6607\",\n        \"question\": \"Solve 118*x = 236 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660a\",\n        \"question\": \"Solve 121*x = 242 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660c\",\n        \"question\": \"Solve 123*x = 246 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6610\",\n        \"question\": \"Solve 127*x = 254 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65de\",\n        \"question\": \"Solve 77*x = 154 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65df\",\n        \"question\": \"Solve 78*x = 156 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e3\",\n        \"question\": \"Solve 82*x = 164 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e6\",\n        \"question\": \"Solve 85*x = 170 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e7\",\n        \"question\": \"Solve 86*x = 172 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65eb\",\n        \"question\": \"Solve 90*x = 180 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ed\",\n        \"question\": \"Solve 92*x = 184 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f5\",\n        \"question\": \"Solve 100*x = 200 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65fb\",\n        \"question\": \"Solve 106*x = 212 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65fd\",\n        \"question\": \"Solve 108*x = 216 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65da\",\n        \"question\": \"Solve 73*x = 146 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65dd\",\n        \"question\": \"Solve 76*x = 152 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e8\",\n        \"question\": \"Solve 87*x = 174 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ea\",\n        \"question\": \"Solve 89*x = 178 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f7\",\n        \"question\": \"Solve 102*x = 204 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6608\",\n        \"question\": \"Solve 119*x = 238 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6611\",\n        \"question\": \"Solve 128*x = 256 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65ee\",\n        \"question\": \"Solve 93*x = 186 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f8\",\n        \"question\": \"Solve 103*x = 206 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6601\",\n        \"question\": \"Solve 112*x = 224 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6604\",\n        \"question\": \"Solve 115*x = 230 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660e\",\n        \"question\": \"Solve 125*x = 250 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d5\",\n        \"question\": \"Solve 68*x = 136 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65d8\",\n        \"question\": \"Solve 71*x = 142 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65db\",\n        \"question\": \"Solve 74*x = 148 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e2\",\n        \"question\": \"Solve 81*x = 162 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65e9\",\n        \"question\": \"Solve 88*x = 176 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e65f6\",\n        \"question\": \"Solve 101*x = 202 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6603\",\n        \"question\": \"Solve 114*x = 228 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6609\",\n        \"question\": \"Solve 120*x = 240 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e660b\",\n        \"question\": \"Solve 122*x = 244 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6622\",\n        \"question\": \"Solve 145*x = 290 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6613\",\n        \"question\": \"Solve 130*x = 260 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6623\",\n        \"question\": \"Solve 146*x = 292 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6632\",\n        \"question\": \"Solve 161*x = 322 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6640\",\n        \"question\": \"Solve 175*x = 350 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6642\",\n        \"question\": \"Solve 177*x = 354 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664c\",\n        \"question\": \"Solve 187*x = 374 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664f\",\n        \"question\": \"Solve 190*x = 380 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6614\",\n        \"question\": \"Solve 131*x = 262 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661a\",\n        \"question\": \"Solve 137*x = 274 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6621\",\n        \"question\": \"Solve 144*x = 288 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6629\",\n        \"question\": \"Solve 152*x = 304 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662a\",\n        \"question\": \"Solve 153*x = 306 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6630\",\n        \"question\": \"Solve 159*x = 318 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6639\",\n        \"question\": \"Solve 168*x = 336 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663b\",\n        \"question\": \"Solve 170*x = 340 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6645\",\n        \"question\": \"Solve 180*x = 360 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664a\",\n        \"question\": \"Solve 185*x = 370 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664d\",\n        \"question\": \"Solve 188*x = 376 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6626\",\n        \"question\": \"Solve 149*x = 298 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6615\",\n        \"question\": \"Solve 132*x = 264 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6620\",\n        \"question\": \"Solve 143*x = 286 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661e\",\n        \"question\": \"Solve 141*x = 282 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6616\",\n        \"question\": \"Solve 133*x = 266 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6617\",\n        \"question\": \"Solve 134*x = 268 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6618\",\n        \"question\": \"Solve 135*x = 270 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661d\",\n        \"question\": \"Solve 140*x = 280 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6633\",\n        \"question\": \"Solve 162*x = 324 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6636\",\n        \"question\": \"Solve 165*x = 330 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663d\",\n        \"question\": \"Solve 172*x = 344 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663f\",\n        \"question\": \"Solve 174*x = 348 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664e\",\n        \"question\": \"Solve 189*x = 378 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6627\",\n        \"question\": \"Solve 150*x = 300 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6628\",\n        \"question\": \"Solve 151*x = 302 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6634\",\n        \"question\": \"Solve 163*x = 326 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6638\",\n        \"question\": \"Solve 167*x = 334 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6641\",\n        \"question\": \"Solve 176*x = 352 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6646\",\n        \"question\": \"Solve 181*x = 362 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6647\",\n        \"question\": \"Solve 182*x = 364 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6637\",\n        \"question\": \"Solve 166*x = 332 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663a\",\n        \"question\": \"Solve 169*x = 338 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663e\",\n        \"question\": \"Solve 173*x = 346 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6643\",\n        \"question\": \"Solve 178*x = 356 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661f\",\n        \"question\": \"Solve 142*x = 284 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662b\",\n        \"question\": \"Solve 154*x = 308 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6649\",\n        \"question\": \"Solve 184*x = 368 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6650\",\n        \"question\": \"Solve 191*x = 382 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6624\",\n        \"question\": \"Solve 147*x = 294 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6612\",\n        \"question\": \"Solve 129*x = 258 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6625\",\n        \"question\": \"Solve 148*x = 296 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662e\",\n        \"question\": \"Solve 157*x = 314 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6631\",\n        \"question\": \"Solve 160*x = 320 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6635\",\n        \"question\": \"Solve 164*x = 328 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e664b\",\n        \"question\": \"Solve 186*x = 372 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6651\",\n        \"question\": \"Solve 192*x = 384 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6619\",\n        \"question\": \"Solve 136*x = 272 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661b\",\n        \"question\": \"Solve 138*x = 276 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e661c\",\n        \"question\": \"Solve 139*x = 278 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662c\",\n        \"question\": \"Solve 155*x = 310 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662d\",\n        \"question\": \"Solve 156*x = 312 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e662f\",\n        \"question\": \"Solve 158*x = 316 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e663c\",\n        \"question\": \"Solve 171*x = 342 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6644\",\n        \"question\": \"Solve 179*x = 358 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6648\",\n        \"question\": \"Solve 183*x = 366 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6653\",\n        \"question\": \"Solve 194*x = 388 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6658\",\n        \"question\": \"Solve 199*x = 398 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6652\",\n        \"question\": \"Solve 193*x = 386 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6654\",\n        \"question\": \"Solve 195*x = 390 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667c\",\n        \"question\": \"Solve 235*x = 470 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667e\",\n        \"question\": \"Solve 237*x = 474 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6680\",\n        \"question\": \"Solve 239*x = 478 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6682\",\n        \"question\": \"Solve 241*x = 482 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a9\",\n        \"question\": \"Solve 280*x = 560 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66ab\",\n        \"question\": \"Solve 282*x = 564 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b7\",\n        \"question\": \"Solve 294*x = 588 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665b\",\n        \"question\": \"Solve 202*x = 404 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6666\",\n        \"question\": \"Solve 213*x = 426 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666d\",\n        \"question\": \"Solve 220*x = 440 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6674\",\n        \"question\": \"Solve 227*x = 454 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66aa\",\n        \"question\": \"Solve 281*x = 562 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66ae\",\n        \"question\": \"Solve 285*x = 570 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6655\",\n        \"question\": \"Solve 196*x = 392 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665d\",\n        \"question\": \"Solve 204*x = 408 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6678\",\n        \"question\": \"Solve 231*x = 462 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667a\",\n        \"question\": \"Solve 233*x = 466 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6681\",\n        \"question\": \"Solve 240*x = 480 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6685\",\n        \"question\": \"Solve 244*x = 488 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6686\",\n        \"question\": \"Solve 245*x = 490 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668b\",\n        \"question\": \"Solve 250*x = 500 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6694\",\n        \"question\": \"Solve 259*x = 518 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669d\",\n        \"question\": \"Solve 268*x = 536 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a4\",\n        \"question\": \"Solve 275*x = 550 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66ad\",\n        \"question\": \"Solve 284*x = 568 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b3\",\n        \"question\": \"Solve 290*x = 580 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66bd\",\n        \"question\": \"Solve 300*x = 600 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6656\",\n        \"question\": \"Solve 197*x = 394 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665a\",\n        \"question\": \"Solve 201*x = 402 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6672\",\n        \"question\": \"Solve 225*x = 450 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6675\",\n        \"question\": \"Solve 228*x = 456 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6677\",\n        \"question\": \"Solve 230*x = 460 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668d\",\n        \"question\": \"Solve 252*x = 504 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668f\",\n        \"question\": \"Solve 254*x = 508 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6693\",\n        \"question\": \"Solve 258*x = 516 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6697\",\n        \"question\": \"Solve 262*x = 524 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a0\",\n        \"question\": \"Solve 271*x = 542 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a1\",\n        \"question\": \"Solve 272*x = 544 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a5\",\n        \"question\": \"Solve 276*x = 552 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6662\",\n        \"question\": \"Solve 209*x = 418 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6664\",\n        \"question\": \"Solve 211*x = 422 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6665\",\n        \"question\": \"Solve 212*x = 424 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666e\",\n        \"question\": \"Solve 221*x = 442 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6670\",\n        \"question\": \"Solve 223*x = 446 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6679\",\n        \"question\": \"Solve 232*x = 464 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667d\",\n        \"question\": \"Solve 236*x = 472 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6684\",\n        \"question\": \"Solve 243*x = 486 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6692\",\n        \"question\": \"Solve 257*x = 514 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6667\",\n        \"question\": \"Solve 214*x = 428 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666a\",\n        \"question\": \"Solve 217*x = 434 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666c\",\n        \"question\": \"Solve 219*x = 438 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6673\",\n        \"question\": \"Solve 226*x = 452 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6689\",\n        \"question\": \"Solve 248*x = 496 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668e\",\n        \"question\": \"Solve 253*x = 506 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6699\",\n        \"question\": \"Solve 264*x = 528 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669b\",\n        \"question\": \"Solve 266*x = 532 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669e\",\n        \"question\": \"Solve 269*x = 538 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a2\",\n        \"question\": \"Solve 273*x = 546 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a7\",\n        \"question\": \"Solve 278*x = 556 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66af\",\n        \"question\": \"Solve 286*x = 572 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6657\",\n        \"question\": \"Solve 198*x = 396 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6659\",\n        \"question\": \"Solve 200*x = 400 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665c\",\n        \"question\": \"Solve 203*x = 406 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665e\",\n        \"question\": \"Solve 205*x = 410 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e665f\",\n        \"question\": \"Solve 206*x = 412 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6660\",\n        \"question\": \"Solve 207*x = 414 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6661\",\n        \"question\": \"Solve 208*x = 416 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6668\",\n        \"question\": \"Solve 215*x = 430 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666b\",\n        \"question\": \"Solve 218*x = 436 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e666f\",\n        \"question\": \"Solve 222*x = 444 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6671\",\n        \"question\": \"Solve 224*x = 448 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6676\",\n        \"question\": \"Solve 229*x = 458 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667b\",\n        \"question\": \"Solve 234*x = 468 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e667f\",\n        \"question\": \"Solve 238*x = 476 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6687\",\n        \"question\": \"Solve 246*x = 492 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6688\",\n        \"question\": \"Solve 247*x = 494 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668c\",\n        \"question\": \"Solve 251*x = 502 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6691\",\n        \"question\": \"Solve 256*x = 512 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6698\",\n        \"question\": \"Solve 263*x = 526 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669a\",\n        \"question\": \"Solve 265*x = 530 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a3\",\n        \"question\": \"Solve 274*x = 548 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66ac\",\n        \"question\": \"Solve 283*x = 566 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b0\",\n        \"question\": \"Solve 287*x = 574 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b2\",\n        \"question\": \"Solve 289*x = 578 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b5\",\n        \"question\": \"Solve 292*x = 584 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b6\",\n        \"question\": \"Solve 293*x = 586 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b8\",\n        \"question\": \"Solve 295*x = 590 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b9\",\n        \"question\": \"Solve 296*x = 592 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66ba\",\n        \"question\": \"Solve 297*x = 594 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6663\",\n        \"question\": \"Solve 210*x = 420 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6669\",\n        \"question\": \"Solve 216*x = 432 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6683\",\n        \"question\": \"Solve 242*x = 484 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e668a\",\n        \"question\": \"Solve 249*x = 498 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6690\",\n        \"question\": \"Solve 255*x = 510 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6695\",\n        \"question\": \"Solve 260*x = 520 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e6696\",\n        \"question\": \"Solve 261*x = 522 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669c\",\n        \"question\": \"Solve 267*x = 534 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e669f\",\n        \"question\": \"Solve 270*x = 540 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a6\",\n        \"question\": \"Solve 277*x = 554 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66a8\",\n        \"question\": \"Solve 279*x = 558 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b1\",\n        \"question\": \"Solve 288*x = 576 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66b4\",\n        \"question\": \"Solve 291*x = 582 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66bb\",\n        \"question\": \"Solve 298*x = 596 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67083ffcd3d0d678b63e66bc\",\n        \"question\": \"Solve 299*x = 598 for x.\",\n        \"answer\": \"2\",\n        \"module\": \"algebra__linear_1d\"\n    },\n    {\n        \"_id\": \"67105971fd5380dd2caaa166\",\n        \"question\": \"Solve 14*x = 42 for x.\",\n        \"answer\": \"3\",\n        \"module\": \"algebra__linear_1d\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get One Question",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/questions/670754be00d65fe8204133dd",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"670754be00d65fe8204133dd"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/questions/670754be00d65fe8204133dd",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"670754be00d65fe8204133dd"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "113"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"71-SKUFTnKRdr75Jjdgc+Ccc9dyuJA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Oct 2024 03:55:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"670754be00d65fe8204133dd\",\n    \"question\": \"Solve 13*x = 26 for x.\",\n    \"answer\": \"2\",\n    \"module\": \"algebra__linear_1d\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a Question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"Solve 6*x = 72 for x.\",\n    \"answer\": 12,\n    \"module\": \"algebra__linear_1d\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/questions/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\": \"Solve 6*x = 72 for x.\",\n    \"answer\": 12,\n    \"module\": \"algebra__linear_1d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/questions/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "121"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"79-ERqkDvehseYx+8vxl78vuHA6kqg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Oct 2024 03:55:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"question\": \"Solve 6*x = 72 for x.\",\n    \"answer\": \"12\",\n    \"module\": \"algebra__linear_1d\",\n    \"_id\": \"67108aa960a291e8268bb47a\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Update a Question",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"Solve 6*x = 60 for x.\",\n    \"answer\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/questions/modifyQuestion/6710810b912ec26c9e5cc43e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"modifyQuestion",
+						"6710810b912ec26c9e5cc43e"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\": \"Solve 6*x = 60 for x.\",\n    \"answer\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/questions/modifyQuestion/67108aa960a291e8268bb47a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"modifyQuestion",
+								"67108aa960a291e8268bb47a"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "121"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"79-c0KwrO0//GZWDj/NRMogW5M/jbc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Oct 2024 03:55:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"67108aa960a291e8268bb47a\",\n    \"question\": \"Solve 6*x = 60 for x.\",\n    \"answer\": \"10\",\n    \"module\": \"algebra__linear_1d\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a Question",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/questions/6710810b912ec26c9e5cc43e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"6710810b912ec26c9e5cc43e"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/questions/67108aa960a291e8268bb47a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"questions",
+								"67108aa960a291e8268bb47a"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1d-vA/KrDIYkIw41LQjzT3sqqG+hhU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Oct 2024 03:55:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "Question successfully deleted"
+				}
+			]
+		}
+	]
+}
