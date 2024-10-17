@@ -108,7 +108,7 @@ We've created a **Postman collection** for easy interaction with our API. This c
 ### **How to Use the Postman Collection** 🛠️
 
 1. **Download the Postman Collection**:
-   - You can download the collection [here](.AI Grader.postman_collection.json).
+   - You can download the collection [here](./path/to/AI_Grader.postman_collection.json).
 
 2. **Import the Collection into Postman**:
    - Open **Postman**.
@@ -120,6 +120,8 @@ We've created a **Postman collection** for easy interaction with our API. This c
    - After importing the collection, you will see different requests such as:
      - **Get All Questions**: A `GET` request to fetch all available Pre-Calculus questions from the database.
      - **Submit Response**: A `POST` request to submit a student's answer for evaluation.
+     - **Update Response**: A `PATCH` request to update an existing response.
+     - **Delete Question**: A `DELETE` request to remove a question from the system.
      - **Get Question by ID**: A `GET` request to retrieve a specific question based on its ID.
 
 4. **Set Up Environment Variables**:
@@ -150,7 +152,24 @@ Here are some example requests you can make:
      }
      ```
 
-3. **Get a Question by ID**:
+3. **Update a Response**:
+   - **Method**: `PATCH`
+   - **URL**: `{{base_url}}/responses/{id}`
+   - **Body** (example):
+     ```json
+     {
+       "submitted_answer": "Updated answer",
+       "score": 9,
+       "feedback": "Updated feedback"
+     }
+     ```
+
+4. **Delete a Question**:
+   - **Method**: `DELETE`
+   - **URL**: `{{base_url}}/questions/{id}`
+   - **Description**: Removes a question from the database.
+
+5. **Get a Question by ID**:
    - **Method**: `GET`
    - **URL**: `{{base_url}}/questions/{id}`
 
@@ -283,3 +302,8 @@ We love contributions! Feel free to **open a pull request** or **raise an issue*
 ---
 
 Thanks for checking out the **AI-Powered Pre-Calculus Grading System**! Happy learning 🧘‍♂️🤓!
+
+
+
+
+
