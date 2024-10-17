@@ -4,9 +4,9 @@ const examRouter = express.Router();
 
 examRouter.get("/", examController.getAllExams);
 
-examRouter.get("/:exam_id", examController.getOneExam);
-
 examRouter.post("/", examController.createExam);
+
+examRouter.get("/:exam_id", examController.getOneExam);
 
 examRouter.patch("/:exam_id", examController.updateExam);
 
