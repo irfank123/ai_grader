@@ -48,7 +48,7 @@ const updateQuestion = async (req, res) => {
     if (!updatedQuestion) {
       return res.status(404).send("Question not found");
     }
-    res.status(200).json(updateQuestion);
+    res.status(200).json(updatedQuestion);
   } catch (error) {
     res.status(500).send("Failed to update question: " + error.message);
   }
