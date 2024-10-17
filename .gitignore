@@ -11,3 +11,11 @@ __pycache__/
 generated_questions.csv
 
 .DS_Store
+
+# dependencies
+**/node_modules
+/.pnp
+.pnp.js
+
+**/package-lock.json
+**/package.json
