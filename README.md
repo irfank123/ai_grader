@@ -101,6 +101,85 @@ Our **Node js** backend provides the following API endpoints for exams, question
 
 ---
 
+## **Postman Collection** 🚀
+
+We've created a **Postman collection** for easy interaction with our API. This collection contains pre-configured requests to help you test the available API endpoints.
+
+### **How to Use the Postman Collection** 🛠️
+
+1. **Download the Postman Collection**:
+   - You can download the collection [here](.AI Grader.postman_collection.json).
+
+2. **Import the Collection into Postman**:
+   - Open **Postman**.
+   - Click on the **Import** button located at the top left of the Postman application.
+   - Select the **AI_Grader.postman_collection.json** file from your local machine.
+   - Click **Open** to import it into Postman.
+
+3. **Explore API Endpoints**:
+   - After importing the collection, you will see different requests such as:
+     - **Get All Questions**: A `GET` request to fetch all available Pre-Calculus questions from the database.
+     - **Submit Response**: A `POST` request to submit a student's answer for evaluation.
+     - **Get Question by ID**: A `GET` request to retrieve a specific question based on its ID.
+
+4. **Set Up Environment Variables**:
+   - You can configure environment variables for your **localhost** or **deployed server** to streamline testing.
+   - Navigate to the **Environments** tab in Postman, and set `base_url` to `http://localhost:3000/api/v1` or your deployed API base URL.
+
+### **Example Requests in Postman**:
+
+Here are some example requests you can make:
+
+1. **Get All Questions**:
+   - **Method**: `GET`
+   - **URL**: `{{base_url}}/questions/`
+   - **Description**: Retrieves all available Pre-Calculus questions.
+
+2. **Submit a Response**:
+   - **Method**: `POST`
+   - **URL**: `{{base_url}}/responses`
+   - **Body** (example):
+     ```json
+     {
+       "user_id": "ObjectId('userid')",
+       "question_id": "ObjectId('questionid')",
+       "submitted_answer": "x^2 + 4x - 9",
+       "speech_to_text": "I simplified both sides of the equation",
+       "score": 8,
+       "feedback": "Good job!"
+     }
+     ```
+
+3. **Get a Question by ID**:
+   - **Method**: `GET`
+   - **URL**: `{{base_url}}/questions/{id}`
+
+---
+
+### **Interacting with the API using Postman** 🧰
+
+Once the collection is imported, you can interact with the API using the following steps:
+
+1. **Start the Backend Server**:
+   Ensure your backend server is running locally or on a remote server. You can start it with:
+   ```bash
+   cd backend
+   node server
+   ```
+
+2. **Make API Calls**:
+   - Select the desired request from the Postman collection.
+   - If required, modify the request body, headers, or query parameters as per your needs.
+   - Click **Send** to make the request and view the API response in Postman.
+
+This setup will help you and your team easily test and debug the API endpoints during development.
+
+
+
+---
+
+
+
 ## **Entity Relationship Diagram** 📊
 
 Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections used in our AI-powered Pre-Calculus Grading System.
@@ -131,8 +210,8 @@ Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections u
 
 ### **1. Clone the Repository** 💲
 ```bash
-git clone https://github.com/your-repository-url.git
-cd your-repository
+git clone https://github.com/irfank123/ai_grader
+cd ai_grader
 ```
 
 ### **2. Backend Setup** 🧑‍🌐
