@@ -16,7 +16,7 @@ Welcome to our **AI-powered Pre-Calculus Grading System**! ✨ This project is d
 The project is made up of several main components:
 
 1. **MongoDB Database** 🧑‍💻: Stores questions, user responses, and related metadata.
-2. **Backend API (Flask)** 🛠️: Handles question retrieval, answer submission, and response evaluation.
+2. **Backend API (Node js)** 🛠️: Handles question retrieval, answer submission, and response evaluation.
 3. **Frontend (React)** 🌱: The user-friendly interface for students to take exams and submit their answers.
 
 ---
@@ -91,11 +91,13 @@ We use **MongoDB** to manage questions and user responses. Below are the main co
 
 ## **API Endpoints** 🛡️
 
-Our **Flask** backend provides the following API endpoints:
+Our **Node js** backend provides the following API endpoints for exams, questions, responses, and users:
 
-1. **GET /questions**: Fetch a list of Pre-Calculus questions 📑.
-2. **POST /responses**: Submit user responses to a specific question 📝.
-3. **GET /responses/{user_id}**: Retrieve all responses for a user, including feedback and scores 🤖.
+1. **getOne**: Retrieve a specific resource (exam, question, response, or user) based on its ID.
+2. **getAll**: Retrieve a list of all resources (exams, questions, responses, or users).
+3. **Post**: Create a new resource (exam, question, response, or user).
+4. **Patch**: Update an existing resource (exam, question, response, or user) with new information.
+5. **Delete**: Remove a specific resource (exam, question, response, or user) based on its ID.
 
 ---
 
@@ -110,7 +112,7 @@ Below is the **Entity Relationship Diagram (ERD)** for the MongoDB collections u
 ## **Tech Stack** 🤖🛠️🛠️
 
 ### **Backend** 🛍
-- **Flask (Python)**: Manages API logic.
+- **Node js**: Manages API logic.
 - **MongoDB**: Stores all data 📀.
 - **Pandas**: Processes datasets for Pre-Calculus questions.
 - **OpenAI GPT-4**: Evaluates written and verbal responses 🕵️‍♂️.
@@ -136,12 +138,11 @@ cd your-repository
 ### **2. Backend Setup** 🧑‍🌐
 - Install required dependencies:
   ```bash
-  pip install -r requirements.txt
+  cd backend
+  npm install
+  node server
   ```
-- Start the Flask backend:
-  ```bash
-  flask run
-  ```
+
 
 ### **3. Frontend Setup** 🛠️
 - Navigate to the frontend directory and install dependencies:
