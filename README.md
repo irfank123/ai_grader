@@ -108,7 +108,7 @@ We've created a **Postman collection** for easy interaction with our API. This c
 ### **How to Use the Postman Collection** 🛠️
 
 1. **Download the Postman Collection**:
-   - You can download the collection [here](./path/to/AI_Grader.postman_collection.json).
+   - You can download the collection [here](./AI%20Grader.postman_collection.json).
 
 2. **Import the Collection into Postman**:
    - Open **Postman**.
