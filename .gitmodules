@@ -1,0 +1,3 @@
+[submodule "transcribe-anything"]
+	path = transcribe-anything
+	url = https://github.com/zackees/transcribe-anything.git
