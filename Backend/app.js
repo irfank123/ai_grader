@@ -9,6 +9,7 @@ const examRouter = require("./routes/examRoutes");
 const questionRouter = require("./routes/questionRoutes");
 const responseRouter = require("./routes/responseRoutes");
 const userRouter = require("./routes/userRoutes");
+const audioRouter = require("./routes/audioTranscriptionRoutes");
 
 // express app
 const app = express();
@@ -33,5 +34,6 @@ app.use("/api/v1/exams", examRouter);
 app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/responses", responseRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/uploads", audioRouter);
 
 module.exports = app;
