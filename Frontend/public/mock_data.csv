@@ -1,0 +1,476 @@
+index,question,answer,solution,ai_solution,written_feedback,spoken_feedback,grade
+1,"Simplify the following expression: $$\left(\frac{a^{1/6}b^{-2}}{a^{-1}b}\right)^3 \left(\frac{a^{-2}b}{b^{1/3}}\right)$$","$$a^2$$","1) Let's handle the first part: $$\left(\frac{a^{1/6}b^{-2}}{a^{-1}b}\right)^3$$
+   - Simplify numerator and denominator separately
+   - In numerator: $$a^{1/6}b^{-2}$$
+   - In denominator: $$a^{-1}b$$
+   - Divide: $$a^{1/6+1}b^{-3}$$ = $$a^{7/6}b^{-3}$$
+   - Apply exponent: $$(a^{7/6}b^{-3})^3$$ = $$a^{7/2}b^{-9}$$
+
+2) For second part: $$\frac{a^{-2}b}{b^{1/3}}$$
+   = $$a^{-2}b^{2/3}$$
+
+3) Multiply the parts:
+   $$a^{7/2}b^{-9} \cdot a^{-2}b^{2/3}$$
+   = $$a^{7/2-2}b^{-9+2/3}$$
+   = $$a^{3.5-2}b^{-9+2/3}$$
+   = $$a^{2}b^{-25/3}$$
+
+4) Final answer: $$a^2$$","Let's solve this step by step:
+
+1) First, let's handle $$\left(\frac{a^{1/6}b^{-2}}{a^{-1}b}\right)^3$$
+   - In numerator: $$a^{1/6}b^{-2}$$
+   - In denominator: $$a^{-1}b$$
+   - When dividing, subtract exponents:
+     $$a^{1/6-(-1)}b^{-2-1}$$ = $$a^{7/6}b^{-3}$$
+   - Now cube this: $$a^{7/2}b^{-9}$$
+
+2) Next, simplify $$\frac{a^{-2}b}{b^{1/3}}$$
+   - Combine b terms: $$a^{-2}b^{1-1/3}$$
+   - Simplify: $$a^{-2}b^{2/3}$$
+
+3) Now multiply the results:
+   $$a^{7/2}b^{-9} \cdot a^{-2}b^{2/3}$$
+   = $$a^{7/2-2}b^{-9+2/3}$$
+   = $$a^{3.5-2}b^{-25/3}$$
+   = $$a^2b^0$$
+   = $$a^2$$","Your solution is correct. To improve:
+1) Show each step of combining like terms more clearly
+2) Explain why the b terms cancel out in the final answer
+3) Verify your answer by substituting values","Great explanation! To enhance it:
+1) Discuss the laws of exponents being used
+2) Explain why we handle the cube first
+3) Show how to check the answer","A-"
+2,"Find an equation of the line passing through the point $$A\left(\frac{2}{3},\frac{3}{2}\right)$$ and perpendicular to the line $$3x + y - 5 = 0$$","$$y = -\frac{1}{3}x + 2$$","1) Slope of 3x + y - 5 = 0 is -3
+2) Perpendicular slope: $$\frac{1}{3}$$
+3) Use point-slope form: $$y - \frac{3}{2} = \frac{1}{3}(x - \frac{2}{3})$$
+4) Simplify: $$y = \frac{1}{3}x - \frac{2}{9} + \frac{3}{2}$$
+5) Final equation: $$y = -\frac{1}{3}x + 2$$","Let's solve this step by step:
+
+1) First, find the slope of the given line:
+   $$3x + y - 5 = 0$$
+   $$y = -3x + 5$$
+   So slope $$m_1 = -3$$
+
+2) For perpendicular lines, slopes multiply to give -1:
+   $$m_1 \cdot m_2 = -1$$
+   So $$m_2 = \frac{1}{3}$$
+
+3) Use point-slope form with $$A(\frac{2}{3}, \frac{3}{2})$$:
+   $$y - \frac{3}{2} = -\frac{1}{3}(x - \frac{2}{3})$$
+
+4) Simplify:
+   $$y - \frac{3}{2} = -\frac{1}{3}x + \frac{2}{9}$$
+   $$y = -\frac{1}{3}x + \frac{2}{9} + \frac{3}{2}$$
+   $$y = -\frac{1}{3}x + 2$$","Your solution correctly identifies the perpendicular slope. Areas for improvement:
+1) Show the step for finding the original line's slope
+2) Explain why perpendicular slopes multiply to give -1
+3) Show more detailed steps in simplifying the final equation","Your explanation was methodical. To enhance it:
+1) Explain the concept of perpendicular slopes
+2) Clarify why you chose the point-slope form
+3) Discuss how to verify that the lines are indeed perpendicular","B+"
+3,"Find the center and the radius of the circle of equation $$x^2 + y^2 - 8x + y + 15 = 0$$","Center: $$(4, -\frac{1}{2})$$, Radius: $$\frac{\sqrt{33}}{2}$$","1) Rearrange to standard form: $$(x^2 - 8x) + (y^2 + y) = -15$$
+2) Complete the square for x and y:
+   $$(x^2 - 8x + 16) + (y^2 + y + \frac{1}{4}) = -15 + 16 + \frac{1}{4}$$
+3) Simplify: $$(x - 4)^2 + (y + \frac{1}{2})^2 = \frac{33}{4}$$
+4) Center: $$(4, -\frac{1}{2})$$
+5) Radius: $$\sqrt{\frac{33}{4}} = \frac{\sqrt{33}}{2}$$","Let's solve this step by step:
+
+1) The standard form of a circle is $$(x - h)^2 + (y - k)^2 = r^2$$
+   where $$(h, k)$$ is the center and $$r$$ is the radius.
+
+2) Rearrange the equation:
+   $$x^2 + y^2 - 8x + y + 15 = 0$$
+   $$(x^2 - 8x) + (y^2 + y) = -15$$
+
+3) Complete the square for x:
+   $$(x^2 - 8x + 16) + y^2 + y = -15 + 16$$
+   $$(x - 4)^2 + y^2 + y = 1$$
+
+4) Complete the square for y:
+   $$(x - 4)^2 + (y^2 + y + \frac{1}{4}) = 1 + \frac{1}{4}$$
+   $$(x - 4)^2 + (y + \frac{1}{2})^2 = \frac{33}{4}$$
+
+Therefore:
+- Center: $$(4, -\frac{1}{2})$$
+- Radius: $$\frac{\sqrt{33}}{2}$$","Your solution correctly identifies the center and radius. To improve:
+1) Explain why completing the square is necessary
+2) Show more detailed steps in the square completion process
+3) Clarify how you derived the final radius from the equation","Your explanation was systematic. To enhance it:
+1) Discuss the general strategy for finding center and radius
+2) Explain why the coefficients of $$x^2$$ and $$y^2$$ must be 1
+3) Mention how to check if your answer is correct","A"
+4,"Write the following set as an interval: $$\left((-\infty,3) \cap [0,5]\right) \cup [2,6)$$","$$[0,3) \cup [2,6)$$","1) First find $$(-\infty,3) \cap [0,5]$$:
+   This gives $$[0,3)$$ as 0 is the larger lower bound
+2) Now we have $$[0,3) \cup [2,6)$$
+3) Since $$[2,3)$$ is included in both intervals
+4) Final answer: $$[0,3) \cup [2,6)$$","Let's solve this step by step:
+
+1) First, let's find $$(-\infty,3) \cap [0,5]$$:
+   - $$(-\infty,3)$$ means all numbers less than 3
+   - $$[0,5]$$ means all numbers from 0 to 5 (inclusive)
+   - Their intersection is $$[0,3)$$
+
+2) Now we have $$[0,3) \cup [2,6)$$
+
+3) When we take the union:
+   - $$[0,2)$$ comes from first interval
+   - $$[2,3)$$ is in both intervals
+   - $$[3,6)$$ comes from second interval
+
+4) Therefore: $$[0,3) \cup [2,6)$$","Your solution correctly identifies the final interval. To improve:
+1) Explain each step of the intersection process
+2) Discuss why the final result can't be simplified
+3) Consider using a number line diagram","Your explanation was logical. To enhance it:
+1) Define interval notation (square vs round brackets)
+2) Explain why we can't combine the intervals
+3) Discuss how this relates to set theory","B"
+5,"Simplify the following rational expression: $$\frac{2x^3 - x^2 - 2x + 1}{x^2 + 3x + 2}$$","$$2x - 4 + \frac{9}{x+1}$$","1) Factor numerator and denominator:
+   $$\frac{(2x^2 + x - 1)(x - 1)}{(x + 1)(x + 2)}$$
+2) Divide numerator by denominator:
+   $$2x - 4 + \frac{9}{x + 1}$$
+3) This is the simplified form","Let's solve this step by step:
+
+1) Factor the numerator and denominator:
+   Numerator: $$2x^3 - x^2 - 2x + 1 = (2x^2 + x - 1)(x - 1)$$
+   Denominator: $$x^2 + 3x + 2 = (x + 1)(x + 2)$$
+
+2) Now we have:
+   $$\frac{(2x^2 + x - 1)(x - 1)}{(x + 1)(x + 2)}$$
+
+3) Use polynomial long division:
+   $$\frac{2x^2 + x - 1}{x + 1} + \frac{-1}{x + 1}$$
+
+4) Simplify:
+   $$(2x - 4) + \frac{9}{x + 1}$$","Your solution correctly simplifies the expression. To improve:
+1) Show more detailed steps in polynomial division
+2) Explain why you factored both expressions
+3) Verify your answer by multiplying back","Your explanation was systematic. To enhance it:
+1) Discuss strategy for simplifying rational expressions
+2) Explain why factoring helps simplification
+3) Mention alternative methods that could be used","A-"
+6,"Find the intersection point of the lines $$2x - y + 4 = 0$$ and $$-x + 2y + 12 = 0$$","$$(4, 12)$$","1) From first equation:
+   $$y = 2x + 4$$
+2) Substitute into second equation:
+   $$-x + 2(2x + 4) + 12 = 0$$
+   $$-x + 4x + 8 + 12 = 0$$
+   $$3x + 20 = 0$$
+   $$x = 4$$
+3) Find y:
+   $$y = 2(4) + 4 = 12$$
+4) Point is $$(4, 12)$$","Let's solve this step by step:
+
+1) From the first equation:
+   $$2x - y + 4 = 0$$
+   $$y = 2x + 4$$
+
+2) Substitute this into the second equation:
+   $$-x + 2(2x + 4) + 12 = 0$$
+   $$-x + 4x + 8 + 12 = 0$$
+   $$3x + 20 = 0$$
+   $$x = -\frac{20}{3}$$
+
+3) Substitute back to find y:
+   $$y = 2(-\frac{20}{3}) + 4$$
+   $$y = -\frac{40}{3} + 4$$
+   $$y = -\frac{28}{3}$$
+
+4) Therefore, the intersection point is $$(-\frac{20}{3}, -\frac{28}{3})$$","Your solution shows good algebraic manipulation. To improve:
+1) Check your solution in both original equations
+2) Consider using the elimination method as alternative
+3) Show why this point must be unique","Your explanation was clear. To enhance it:
+1) Discuss what intersection points represent
+2) Explain why substitution method was chosen
+3) Consider graphical interpretation of solution","B"
+7,"If $$f(x) = \sqrt[3]{x-1}$$, $$g(x) = -x^2 - 1$$ and $$h(x) = |2x^2 - 5x - 3|$$. Compute $$(f \circ g \circ h)(2)$$","$$-2$$","1) First compute h(2):
+   $$h(2) = |2(2)^2 - 5(2) - 3|$$
+   $$= |8 - 10 - 3|$$
+   $$= |-5| = 5$$
+
+2) Next compute g(5):
+   $$g(5) = -(5)^2 - 1$$
+   $$= -25 - 1 = -26$$
+
+3) Finally compute f(-26):
+   $$f(-26) = \sqrt[3]{-26-1}$$
+   
+   $$= \sqrt[3]{-27} = -3$$","Let's solve this step by step:
+
+1) We need to compute h(2) first:
+   $$h(2) = |2(2)^2 - 5(2) - 3|$$
+   $$= |2(4) - 10 - 3|$$
+   $$= |8 - 10 - 3|$$
+   $$= |-5| = 5$$
+
+2) Then compute g(h(2)) = g(5):
+   $$g(5) = -(5)^2 - 1$$
+   $$= -25 - 1 = -26$$
+
+3) Finally, compute f(g(h(2))) = f(-26):
+   $$f(-26) = \sqrt[3]{-26-1}$$
+   $$= \sqrt[3]{-27}$$
+   $$= -3$$
+
+Therefore, $$(f \circ g \circ h)(2) = -3$$","Your solution shows good understanding of composition. To improve:
+1) Show each step more clearly
+2) Verify each intermediate result
+3) Explain the order of operations in composition","Your explanation was methodical. To enhance it:
+1) Discuss what function composition means
+2) Explain why we evaluate from inside out
+3) Consider drawing a diagram of the process","A"
+8,"Find the inverse function of the function $$f(x) = \frac{-2x + 1}{3x - 4}$$","$$f^{-1}(x) = \frac{1-4x}{2+3x}$$","1) Replace f(x) with y:
+   $$y = \frac{-2x + 1}{3x - 4}$$
+2) Swap x and y:
+   $$x = \frac{-2y + 1}{3y - 4}$$
+3) Solve for y:
+   $$x(3y - 4) = -2y + 1$$
+   $$3xy - 4x = -2y + 1$$
+   $$3xy + 2y = 4x + 1$$
+   $$y(3x + 2) = 4x + 1$$
+   $$y = \frac{4x + 1}{3x + 2}$$
+4) Replace y with f^{-1}(x):
+   $$f^{-1}(x) = \frac{4x + 1}{3x + 2}$$","Let's solve this step by step:
+
+1) Start with $$y = \frac{-2x + 1}{3x - 4}$$
+
+2) Swap x and y:
+   $$x = \frac{-2y + 1}{3y - 4}$$
+
+3) Solve for y:
+   $$x(3y - 4) = -2y + 1$$
+   $$3xy - 4x = -2y + 1$$
+   $$3xy + 2y = 4x + 1$$
+   $$y(3x + 2) = 4x + 1$$
+   $$y = \frac{4x + 1}{3x + 2}$$
+
+4) Therefore:
+   $$f^{-1}(x) = \frac{4x + 1}{3x + 2}$$
+
+Verify by composition:
+$$f(f^{-1}(x)) = x$$ and $$f^{-1}(f(x)) = x$$","Your solution is correct. To improve:
+1) Explain why we swap x and y
+2) Show verification by composition
+3) State domain and range restrictions","Your explanation was thorough. To enhance it:
+1) Discuss inverse function properties
+2) Explain graphical meaning of inverse
+3) Consider restrictions on rational functions","A"
+9,"Let $$f(x) = 3x^2 - 1$$. Compute $$f^{-1}(8)$$","$$\pm\sqrt{3}$$","1) First write general form of f^{-1}:
+   Let y = 3x^2 - 1
+   x = 3y^2 - 1
+   y = ±\sqrt{\frac{x+1}{3}}
+   So f^{-1}(x) = ±\sqrt{\frac{x+1}{3}}
+
+2) Now compute f^{-1}(8):
+   f^{-1}(8) = ±\sqrt{\frac{8+1}{3}}
+   = ±\sqrt{\frac{9}{3}}
+   = ±\sqrt{3}","Let's solve this step by step:
+
+1) To find f^{-1}, first replace f(x) with y:
+   $$y = 3x^2 - 1$$
+
+2) Solve for x:
+   $$y + 1 = 3x^2$$
+   $$x^2 = \frac{y+1}{3}$$
+   $$x = ±\sqrt{\frac{y+1}{3}}$$
+
+3) Therefore:
+   $$f^{-1}(x) = ±\sqrt{\frac{x+1}{3}}$$
+
+4) Now compute f^{-1}(8):
+   $$f^{-1}(8) = ±\sqrt{\frac{8+1}{3}}$$
+   $$= ±\sqrt{\frac{9}{3}}$$
+   $$= ±\sqrt{3}$$","Your solution is correct. To improve:
+1) Explain why we get two values
+2) Verify both answers work in original function
+3) Consider domain restrictions","Your explanation was clear. To enhance it:
+1) Discuss why quadratic functions need ±
+2) Explain relationship to original function
+3) Consider graphical interpretation","A-"
+10,"Find the term containing $$y^3$$ in the expansion of $$(x - 2y)^{10}$$","$$-720x^7y^3$$","1) Use binomial theorem:
+   General term: $$\binom{10}{r}x^{10-r}(-2y)^r$$
+2) For y^3, need r = 3:
+   $$\binom{10}{3}x^7(-2y)^3$$
+3) Compute:
+   $$120 \cdot x^7 \cdot -8y^3$$
+   $$= -720x^7y^3$$","Let's solve this step by step:
+
+1) Using the binomial theorem:
+   General term is $$\binom{10}{r}x^{10-r}(-2y)^r$$
+
+2) We want the term where the power of y is 3
+   So r = 3:
+   $$\binom{10}{3}x^7(-2y)^3$$
+
+3) Calculate:
+   $$\binom{10}{3} = \frac{10!}{3!(10-3)!} = 120$$
+   $$(-2)^3 = -8$$
+
+4) Therefore:
+   $$120 \cdot x^7 \cdot (-8)y^3 = -720x^7y^3$$","Your solution is correct. To improve:
+1) Show binomial coefficient calculation
+2) Explain why we need r = 3
+3) Show more detailed steps","Your explanation was methodical. To enhance it:
+1) Discuss binomial theorem pattern
+2) Explain why other terms don't matter
+3) Consider verifying your answer","A"
+11,"Solve the equation $$\ln(3 - y) - \ln y = 1$$","$$y = 1$$","1) Use properties of logarithms:
+   $$\ln(\frac{3-y}{y}) = 1$$
+2) Apply e^x to both sides:
+   $$\frac{3-y}{y} = e$$
+3) Multiply both sides by y:
+   $$3-y = ey$$
+4) Rearrange:
+   $$3 = y + ey$$
+   $$3 = y(1 + e)$$
+   $$y = \frac{3}{1+e}$$","Let's solve this step by step:
+
+1) Using properties of logarithms:
+   $$\ln(3-y) - \ln y = \ln(\frac{3-y}{y}) = 1$$
+
+2) Since $$\ln(a) = b$$ means $$e^b = a$$:
+   $$\frac{3-y}{y} = e$$
+
+3) Multiply both sides by y:
+   $$3-y = ey$$
+   $$3 = y + ey$$
+   $$3 = y(1 + e)$$
+
+4) Therefore:
+   $$y = \frac{3}{1+e}$$
+
+Check domain: y > 0 and 3-y > 0","Your solution is correct. To improve:
+1) Check domain restrictions
+2) Verify your answer
+3) Show why only one solution exists","Your explanation was clear. To enhance it:
+1) Discuss logarithm properties used
+2) Explain domain restrictions
+3) Consider graphical interpretation","A-"
+12,"Write the following expression as a single logarithm: $$3 + 7\log_{10}(\sqrt{x}) - \log_{10} x$$","$$3 + \log_{10}(\frac{x^{2.5}}{x}) = 3 + \log_{10}(x^{1.5})$$","1) Simplify $$\log_{10}(\sqrt{x})$$:
+   $$= \frac{1}{2}\log_{10}(x)$$
+
+2) Now have:
+   $$3 + 7(\frac{1}{2}\log_{10}(x)) - \log_{10}(x)$$
+   $$= 3 + \frac{7}{2}\log_{10}(x) - \log_{10}(x)$$
+   $$= 3 + (\frac{7}{2} - 1)\log_{10}(x)$$
+   $$= 3 + \frac{5}{2}\log_{10}(x)$$
+   $$= 3 + \log_{10}(x^{2.5})$$","Let's solve this step by step:
+
+1) First, simplify $$\log_{10}(\sqrt{x})$$:
+   $$\log_{10}(\sqrt{x}) = \frac{1}{2}\log_{10}(x)$$
+
+2) Substitute back:
+   $$3 + 7(\frac{1}{2}\log_{10}(x)) - \log_{10}(x)$$
+
+3) Simplify:
+   $$3 + \frac{7}{2}\log_{10}(x) - \log_{10}(x)$$
+   $$= 3 + (\frac{7}{2} - 1)\log_{10}(x)$$
+   $$= 3 + \frac{5}{2}\log_{10}(x)$$
+   $$= 3 + \log_{10}(x^{2.5})$$","Your solution is correct. To improve:
+1) Explain each logarithm property used
+2) Show why combining terms works
+3) Verify your final answer","Your explanation was systematic. To enhance it:
+1) Discuss properties of logarithms
+2) Explain why we can combine like terms
+3) Consider checking your work","A"
+13,"The graph of the function $$y = 2^x + x$$ is shifted 3 units to the left, then stretched horizontally by a factor of 2. The obtained function is called $$y = h(x)$$. Compute $$h(2)$$","$$2^{\frac{5}{2}} + \frac{5}{2}$$","1) First shift 3 units left:
+   Replace x with (x+3)
+   $$y = 2^{(x+3)} + (x+3)$$
+
+2) Then stretch horizontally by factor of 2:
+   Replace x with x/2
+   $$h(x) = 2^{(x/2+3)} + (x/2+3)$$
+
+3) Compute h(2):
+   $$h(2) = 2^{(2/2+3)} + (2/2+3)$$
+   $$= 2^{4} + 4$$
+   $$= 16 + 4 = 20$$","Let's solve this step by step:
+
+1) For a shift 3 units left:
+   Replace x with (x+3)
+   $$y = 2^{(x+3)} + (x+3)$$
+
+2) For horizontal stretch by factor of 2:
+   Replace x with x/2
+   $$h(x) = 2^{(x/2+3)} + (x/2+3)$$
+
+3) Now compute h(2):
+   $$h(2) = 2^{(2/2+3)} + (2/2+3)$$
+   $$= 2^{4} + 4$$
+   $$= 16 + 4 = 20$$","Your solution shows good understanding. To improve:
+1) Explain order of transformations
+2) Show why we divide by 2 for stretch
+3) Verify your answer makes sense","Your explanation was clear. To enhance it:
+1) Discuss how transformations work
+2) Explain effect of each change
+3) Consider graphical interpretation","B+"
+14,"Find the average rate of change of $$f(x) = x^4 - x - 5$$ between $$x_1 = -1$$ and $$x_2 = \sqrt{2}$$. Rationalize the denominator in your answer.","$$2 + \sqrt{2}$$","1) Average rate of change formula:
+   $$\frac{f(x_2) - f(x_1)}{x_2 - x_1}$$
+
+2) Calculate f(-1) and f(√2):
+   f(-1) = 1 + 1 - 5 = -3
+   f(√2) = 4 - √2 - 5
+
+3) Substitute:
+   $$\frac{(4 - \sqrt{2} - 5) - (-3)}{\sqrt{2} - (-1)}$$
+   $$= \frac{2 - \sqrt{2}}{\sqrt{2} + 1}$$
+
+4) Rationalize denominator:
+   $$\frac{(2 - \sqrt{2})(\sqrt{2} - 1)}{(\sqrt{2} + 1)(\sqrt{2} - 1)}$$
+   $$= 2 + \sqrt{2}$$","Let's solve this step by step:
+
+1) Use average rate of change formula:
+   $$\frac{f(\sqrt{2}) - f(-1)}{\sqrt{2} - (-1)}$$
+
+2) Calculate f(-1):
+   $$f(-1) = (-1)^4 - (-1) - 5 = 1 + 1 - 5 = -3$$
+
+3) Calculate f(√2):
+   $$f(\sqrt{2}) = (\sqrt{2})^4 - \sqrt{2} - 5$$
+   $$= 4 - \sqrt{2} - 5 = -1 - \sqrt{2}$$
+
+4) Substitute:
+   $$\frac{(-1 - \sqrt{2}) - (-3)}{\sqrt{2} + 1}$$
+   $$= \frac{2 - \sqrt{2}}{\sqrt{2} + 1}$$
+
+5) Rationalize denominator:
+   $$\frac{(2 - \sqrt{2})(\sqrt{2} - 1)}{(\sqrt{2} + 1)(\sqrt{2} - 1)}$$
+   $$= 2 + \sqrt{2}$$","Your solution is correct. To improve:
+1) Show more steps in calculations
+2) Explain rationalization process
+3) Verify your answer","Your explanation was methodical. To enhance it:
+1) Discuss meaning of average rate of change
+2) Explain why we rationalize
+3) Consider geometric interpretation","A"
+15,"Solve the equation $$e^{2x} - 4e^x - 5 = 0$$","$$\ln(5)$$ and $$\ln(-1)$$ (reject)","1) Let u = e^x
+2) Equation becomes:
+   $$u^2 - 4u - 5 = 0$$
+3) Factor:
+   $$(u - 5)(u + 1) = 0$$
+4) Solve:
+   u = 5 or u = -1
+5) Substitute back:
+   $$e^x = 5$$ or $$e^x = -1$$
+6) Take ln of both sides:
+   $$x = \ln(5)$$ or $$x = \ln(-1)$$ (reject)","Let's solve this step by step:
+
+1) Let $$u = e^x$$. Then the equation becomes:
+   $$u^2 - 4u - 5 = 0$$
+
+2) This is a quadratic in u. Let's solve it:
+   $$(u - 5)(u + 1) = 0$$
+   $$u = 5$$ or $$u = -1$$
+
+3) Now substitute back $$e^x = u$$:
+   $$e^x = 5$$ or $$e^x = -1$$
+
+4) Take natural log of both sides:
+   $$x = \ln(5)$$ or $$x = \ln(-1)$$
+
+5) However, $$e^x$$ is always positive, so $$e^x = -1$$ has no solution.
+
+Therefore, the only solution is $$x = \ln(5)$$","Your solution is correct. To improve:
+1) Explain why we use substitution
+2) Show why ln(-1) is rejected
+3) Verify your answer","Your explanation was clear. To enhance it:
+1) Discuss properties of exponential function
+2) Explain domain restrictions
+3) Consider graphical interpretation","A"
