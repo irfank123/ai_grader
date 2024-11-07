@@ -1,12 +1,7 @@
-// require("dotenv").config({ override: true });
-// const mongoose = require("mongoose");
-// const app = require("./app");
-
 require("dotenv").config({ override: true });
 const mongoose = require("mongoose");
-const express = require("express");
 
-const app = express();
+const app = require("./app");
 
 // connect to database
 mongoose
