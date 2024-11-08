@@ -8,11 +8,11 @@ const questionSchema = new Schema(
       type: String,
       required: true,
     },
-    answer: {
+    solution: {
       type: String,
       required: true,
     },
-    module: {
+    topic: {
       type: String,
       required: true,
     },
