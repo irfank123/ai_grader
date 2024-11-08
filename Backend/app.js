@@ -5,11 +5,14 @@ const morgan = require("morgan");
 const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
+const passport = require("passport");
+const session = require("express-session");
 const examRouter = require("./routes/examRoutes");
 const questionRouter = require("./routes/questionRoutes");
 const responseRouter = require("./routes/responseRoutes");
 const userRouter = require("./routes/userRoutes");
 const audioRouter = require("./routes/audioTranscriptionRoutes");
+const authRouter = require("./routes/authRoutes");
 
 // express app
 const app = express();
@@ -30,10 +33,28 @@ if (process.env.NODE_ENV !== "production") {
 }
 app.use(compression());
 app.use(express.json());
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport configuration
+require("./controllers/authController")(passport);
+
 app.use("/api/v1/exams", examRouter);
 app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/responses", responseRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/uploads", audioRouter);
+app.use("/api/v1/auth", authRouter);
 
 module.exports = app;

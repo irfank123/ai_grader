@@ -12,15 +12,19 @@ const responseSchema = new mongoose.Schema(
       required: true,
       ref: "Question",
     },
-    submitted_answer: {
+    gpt_written_feedback: {
       type: String,
       required: true,
     },
-    speech_to_text: {
+    gpt_spoken_feedback: {
       type: String,
       required: true,
     },
-    score: {
+    user_speech_to_text: {
+      type: String,
+      required: true,
+    },
+    grade: {
       type: Number,
       required: true,
     },

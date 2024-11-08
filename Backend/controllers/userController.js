@@ -1,5 +1,89 @@
 const User = require("../models/userModel");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+
+const registerUser = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    // Check if user already exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    // Create new user
+    user = new User({
+      name,
+      email,
+    });
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+
+    // Save user to database
+    try {
+      await user.save();
+      console.log("User saved successfully:", user);
+    } catch (saveError) {
+      console.error("Error saving user:", saveError);
+      return res
+        .status(500)
+        .json({ message: "Error saving user to database", error: saveError.message });
+    }
+
+    // Log the user in
+    req.login(user, (loginError) => {
+      if (loginError) {
+        console.error("Error logging in after registration:", loginError);
+        return res
+          .status(500)
+          .json({ message: "Error logging in after registration", error: loginError.message });
+      }
+      res.status(201).json({
+        message: "User registered successfully",
+        user: { id: user.id, name: user.name, email: user.email },
+      });
+    });
+  } catch (error) {
+    console.error("Registration error:", error);
+    res.status(500).json({ message: "Failed to register user", error: error.message });
+  }
+};
+
+const loginUser = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
+
+    // Check if the password is correct
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
+
+    // If credentials are correct, log the user in
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.json({
+        message: "Logged in successfully",
+        user: { id: user.id, name: user.name, email: user.email },
+      });
+    });
+  } catch (error) {
+    res.status(500).send("Login error: " + error.message);
+  }
+};
 
 // get all users
 const getAllUsers = async (req, res) => {
@@ -83,6 +167,8 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+  registerUser,
+  loginUser,
   getAllUsers,
   getOneUser,
   createUser,
