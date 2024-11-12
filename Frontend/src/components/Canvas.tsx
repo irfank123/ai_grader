@@ -1,22 +1,24 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { Button } from "@/components/ui/button";
+import p5Types from 'p5';
 
 const Sketch = dynamic(() => import('react-p5').then((mod) => mod.default), {
   ssr: false,
 });
 
-export default function P5Canvas() {
+export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [lastSaveTime, setLastSaveTime] = useState(Date.now());
   const [currentSection, setCurrentSection] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const [buttonText, setButtonText] = useState("Next Section");
+  const p5InstanceRef = useRef<p5Types | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -25,71 +27,88 @@ export default function P5Canvas() {
     }
   }, [isDrawing]);
 
-  const setup = (p5: any, canvasParentRef: Element) => {
-    const canvasWidth = canvasParentRef.clientWidth;
+  const setup = (p5: p5Types, canvasParentRef: Element) => {
+    p5InstanceRef.current = p5;
+    const canvasWidth = canvasParentRef.clientWidth * 2;
     const canvasHeight = 500;
-    p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
-    canvasRef.current = canvasParentRef.querySelector('canvas') as HTMLCanvasElement;
 
+    const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+    canvas.parent(canvasParentRef);
+    canvasRef.current = canvas.elt;
     p5.background(255);
+
+    p5.noFill();
     p5.strokeWeight(4);
     p5.stroke(0);
-    p5.noFill();
-
-    p5.touchStarted = () => {
-      setIsDrawing(true);
-      return false;
-    };
-    p5.touchEnded = () => {
-      setIsDrawing(false);
-      return false;
-    };
-    p5.mousePressed = () => {
-      setIsDrawing(true);
-    };
-    p5.mouseReleased = () => {
-      setIsDrawing(false);
-    };
   };
 
-  const draw = (p5: any) => {
-    p5.background(255);
-    
-    // Draw content based on current section
-    if (currentSection === 0) {
-      p5.fill(200, 100, 100);
-      p5.rect(0, 0, p5.width, p5.height);
-      p5.fill(255);
-      p5.textSize(32);
-      p5.textAlign(p5.CENTER, p5.CENTER);
-      p5.text(`Section 1`, p5.width / 2, p5.height / 2);
-    } else {
-      p5.fill(100, 100, 200);
-      p5.rect(0, 0, p5.width, p5.height);
-      p5.fill(255);
-      p5.textSize(32);
-      p5.textAlign(p5.CENTER, p5.CENTER);
-      p5.text(`Section 2`, p5.width / 2, p5.height / 2);
-    }
-
+  const draw = (p5: p5Types) => {
     if (isDrawing) {
-      const x = p5.mouseX;
-      const y = p5.mouseY;
-      p5.line(p5.pmouseX, p5.pmouseY, x, y);
+      const halfWidth = p5.width / 2;
+      const adjustedMouseX = p5.mouseX - (currentSection * halfWidth);
+      const adjustedPMouseX = p5.pmouseX - (currentSection * halfWidth);
+      
+      if (adjustedMouseX >= 0 && adjustedMouseX < halfWidth) {
+        p5.line(
+          adjustedPMouseX + (currentSection * halfWidth), 
+          p5.pmouseY, 
+          adjustedMouseX + (currentSection * halfWidth), 
+          p5.mouseY
+        );
+      }
     }
+  };
+
+  const mousePressed = (p5: p5Types) => {
+    const halfWidth = p5.width / 2;
+    const adjustedMouseX = p5.mouseX - (currentSection * halfWidth);
+    
+    if (adjustedMouseX >= 0 && adjustedMouseX < halfWidth) {
+      setIsDrawing(true);
+    }
+  };
+
+  const mouseReleased = () => {
+    setIsDrawing(false);
+  };
+
+  const touchStarted = (p5: p5Types) => {
+    const halfWidth = p5.width / 2;
+    if (p5.touches && p5.touches.length > 0) {
+      const touch = p5.touches[0] as p5Types.Vector;
+      const adjustedTouchX = touch.x - (currentSection * halfWidth);
+      
+      if (adjustedTouchX >= 0 && adjustedTouchX < halfWidth) {
+        setIsDrawing(true);
+      }
+    }
+    return false;
+  };
+
+  const touchEnded = () => {
+    setIsDrawing(false);
+    return false;
   };
 
   const switchSection = () => {
-    setCurrentSection((prev) => (prev + 1) % 2);
+    const newSection = (currentSection + 1) % 2;
+    setCurrentSection(newSection);
     setButtonText((prev) => prev === "Next Section" ? "Prev Section" : "Next Section");
+
+    if (containerRef.current) {
+      containerRef.current.scrollLeft = newSection * (containerRef.current.clientWidth);
+    }
   };
 
   const clearCanvas = () => {
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext('2d');
-      ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-      const event = new Event('redraw');
-      window.dispatchEvent(event);
+    if (p5InstanceRef.current) {
+      const p5 = p5InstanceRef.current;
+      const halfWidth = p5.width / 2;
+      p5.fill(255);
+      p5.noStroke();
+      p5.rect(currentSection * halfWidth, 0, halfWidth, p5.height);
+      p5.noFill();
+      p5.stroke(0);
     }
   };
 
@@ -132,28 +151,15 @@ export default function P5Canvas() {
     setAudioChunks([]);
   };
 
-  useEffect(() => {
-    const handleRedraw = () => {
-      if (canvasRef.current) {
-        const p5Instance = (window as any).p5instance;
-        if (p5Instance) {
-          p5Instance.redraw();
-        }
-      }
-    };
-    window.addEventListener('redraw', handleRedraw);
-    return () => {
-      window.removeEventListener('redraw', handleRedraw);
-    };
-  }, []);
+  const downloadImage = () => {
+    if (!canvasRef.current) return;
 
-  useEffect(() => {
-    return () => {
-      if (canvasRef.current) {
-        canvasRef.current.remove();
-      }
-    };
-  }, []);
+    const canvas = canvasRef.current;
+    const link = document.createElement('a');
+    link.download = 'canvas_sections.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
 
   return (
     <div>
@@ -164,39 +170,41 @@ export default function P5Canvas() {
           height: '500px',
           width: '100%',
           border: '1px solid gray',
+          overflow: 'hidden',
         }}
       >
-        <Sketch setup={setup} draw={draw} />
+        <Sketch 
+          setup={setup} 
+          draw={draw}
+          mousePressed={mousePressed}
+          mouseReleased={mouseReleased}
+          touchStarted={touchStarted}
+          touchEnded={touchEnded}
+        />
       </div>
       <div className="mt-4 space-x-4" style={{ textAlign: 'center', marginTop: '10px' }}>
-        <button
-          onClick={switchSection}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
-          style={{ marginRight: '10px' }}
-        >
+        <Button onClick={switchSection} variant="secondary">
           {buttonText}
-        </button>
-        <button
-          onClick={clearCanvas}
-          className="px-4 py-2 bg-red-500 text-white rounded"
-          style={{ marginRight: '10px' }}
-        >
+        </Button>
+        <Button onClick={clearCanvas} variant="destructive">
           Clear Canvas
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={isRecording ? stopRecording : startRecording}
-          className={`px-4 py-2 ${isRecording ? 'bg-yellow-500' : 'bg-green-500'} text-white rounded`}
-          style={{ marginRight: '10px' }}
+          variant={isRecording ? "outline" : "default"}
         >
           {isRecording ? 'Stop Recording' : 'Start Recording'}
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={saveAudio}
-          className="px-4 py-2 bg-purple-500 text-white rounded"
+          variant="secondary"
           disabled={audioChunks.length === 0}
         >
           Save Audio
-        </button>
+        </Button>
+        <Button onClick={downloadImage} variant="secondary">
+          Download Image
+        </Button>
       </div>
     </div>
   );
