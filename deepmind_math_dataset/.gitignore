@@ -1,0 +1,19 @@
+
+# Ignore virtual environments
+venv/
+*.pyc
+__pycache__/
+.venv
+
+# Ignore environment variable files
+.env
+
+# Ignore generated files
+generated_questions.csv
+
+.DS_Store
+
+# dependencies
+**/node_modules
+/.pnp
+.pnp.js

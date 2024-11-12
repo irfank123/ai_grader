@@ -1,190 +1,203 @@
-'use client'
+'use client';
 
-import { useEffect, useRef, useState } from 'react'
-import dynamic from 'next/dynamic'
+import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 
 const Sketch = dynamic(() => import('react-p5').then((mod) => mod.default), {
   ssr: false,
-})
+});
 
 export default function P5Canvas() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const [audioData, setAudioData] = useState<string | null>(null)
-  const [isRecording, setIsRecording] = useState(false)
-  const [recorder, setRecorder] = useState<MediaRecorder | null>(null)
-  const [lastSaveTime, setLastSaveTime] = useState(Date.now())
-  const [currentCanvasIndex, setCurrentCanvasIndex] = useState(0) // track current canvas index
-  const [canvases, setCanvases] = useState<string[]>([]) // store each canvas as an image
-  const [isDrawing, setIsDrawing] = useState(false) // track drawing state
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [lastSaveTime, setLastSaveTime] = useState(Date.now());
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const [buttonText, setButtonText] = useState("Next Section");
 
-  // Prevent page scrolling only while drawing
   useEffect(() => {
-    const preventScroll = (e: TouchEvent) => {
-      if (isDrawing) {
-        e.preventDefault()
-      }
+    const container = containerRef.current;
+    if (container) {
+      container.style.touchAction = isDrawing ? 'none' : 'auto';
     }
+  }, [isDrawing]);
 
-    document.addEventListener('touchmove', preventScroll, { passive: false })
-    return () => {
-      document.removeEventListener('touchmove', preventScroll)
-    }
-  }, [isDrawing])
-
-  // p5 setup function to initialize the canvas
   const setup = (p5: any, canvasParentRef: Element) => {
-    const canvas = p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef)
-    canvasRef.current = canvasParentRef.querySelector('canvas') as HTMLCanvasElement
-    p5.background(255)
-    p5.strokeWeight(4)
-    p5.stroke(0)
-    p5.noFill()
-    canvas.touchStarted(() => {
-      setIsDrawing(true) // enable drawing mode
-      return false
-    })
-    canvas.touchEnded(() => {
-      setIsDrawing(false) // disable drawing mode
-      return false
-    })
-  }
+    const canvasWidth = canvasParentRef.clientWidth;
+    const canvasHeight = 500;
+    p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
+    canvasRef.current = canvasParentRef.querySelector('canvas') as HTMLCanvasElement;
 
-  // p5 draw function to handle drawing
+    p5.background(255);
+    p5.strokeWeight(4);
+    p5.stroke(0);
+    p5.noFill();
+
+    p5.touchStarted = () => {
+      setIsDrawing(true);
+      return false;
+    };
+    p5.touchEnded = () => {
+      setIsDrawing(false);
+      return false;
+    };
+    p5.mousePressed = () => {
+      setIsDrawing(true);
+    };
+    p5.mouseReleased = () => {
+      setIsDrawing(false);
+    };
+  };
+
   const draw = (p5: any) => {
-    if (Date.now() - lastSaveTime > 10000) {
-      saveCanvasToMongoDB()
-      setLastSaveTime(Date.now())
+    p5.background(255);
+    
+    // Draw content based on current section
+    if (currentSection === 0) {
+      p5.fill(200, 100, 100);
+      p5.rect(0, 0, p5.width, p5.height);
+      p5.fill(255);
+      p5.textSize(32);
+      p5.textAlign(p5.CENTER, p5.CENTER);
+      p5.text(`Section 1`, p5.width / 2, p5.height / 2);
+    } else {
+      p5.fill(100, 100, 200);
+      p5.rect(0, 0, p5.width, p5.height);
+      p5.fill(255);
+      p5.textSize(32);
+      p5.textAlign(p5.CENTER, p5.CENTER);
+      p5.text(`Section 2`, p5.width / 2, p5.height / 2);
     }
 
-    if (p5.mouseIsPressed || p5.touches.length > 0) {
-      const x = p5.touches.length > 0 ? p5.touches[0].x : p5.mouseX
-      const y = p5.touches.length > 0 ? p5.touches[0].y : p5.mouseY
-      p5.line(p5.pmouseX, p5.pmouseY, x, y)
+    if (isDrawing) {
+      const x = p5.mouseX;
+      const y = p5.mouseY;
+      p5.line(p5.pmouseX, p5.pmouseY, x, y);
     }
-  }
+  };
 
-  // save the canvas as a base64 string to the MongoDB
-  const saveCanvasToMongoDB = async () => {
-    if (canvasRef.current) {
-      const blob = await new Promise<Blob>((resolve) => canvasRef.current!.toBlob(resolve as BlobCallback))
-      const reader = new FileReader()
-      reader.onloadend = async () => {
-        const base64data = reader.result as string
-
-        const response = await fetch("http://localhost:3000/api/v1/users/", {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ canvas: base64data, audio: audioData })
-        })
-
-        if (response.ok) {
-          console.log('Canvas and audio saved to MongoDB')
-        } else {
-          console.error('Error saving to MongoDB')
-        }
-      }
-      reader.readAsDataURL(blob)
-    }
-  }
-
-  // save the current canvas and move to a new screen
-  const saveCurrentCanvas = () => {
-    if (canvasRef.current) {
-      const imageData = canvasRef.current.toDataURL('image/png') // get canvas as image
-      setCanvases((prev) => {
-        const updatedCanvases = [...prev]
-        updatedCanvases[currentCanvasIndex] = imageData // save image to current canvas index
-        return updatedCanvases
-      })
-      clearCanvas() // clear the canvas after saving
-    }
-  }
-
-  // switch to a new or saved canvas screen
-  const goToCanvas = (index: number) => {
-    if (index < 0 || index >= canvases.length) return // prevent out-of-bounds access
-    setCurrentCanvasIndex(index)
-    const ctx = canvasRef.current?.getContext('2d')
-    if (ctx) {
-      const image = new Image()
-      image.src = canvases[index] // load saved image data
-      image.onload = () => {
-        ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height) // clear canvas
-        ctx.drawImage(image, 0, 0) // draw saved canvas data
-      }
-    }
-  }
+  const switchSection = () => {
+    setCurrentSection((prev) => (prev + 1) % 2);
+    setButtonText((prev) => prev === "Next Section" ? "Prev Section" : "Next Section");
+  };
 
   const clearCanvas = () => {
-    const ctx = canvasRef.current?.getContext('2d')
-    ctx?.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height)
-  }
-
-  const handleAudioRecording = () => {
-    if (!isRecording) {
-      startRecording()
-    } else {
-      stopRecording()
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext('2d');
+      ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      const event = new Event('redraw');
+      window.dispatchEvent(event);
     }
-    setIsRecording(!isRecording)
-  }
+  };
 
   const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    const newRecorder = new MediaRecorder(stream)
-    const audioChunks: Blob[] = []
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
 
-    newRecorder.ondataavailable = (event) => {
-      audioChunks.push(event.data)
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          setAudioChunks((chunks) => [...chunks, event.data]);
+        }
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error('Error accessing microphone:', error);
     }
-
-    newRecorder.onstop = () => {
-      const audioBlob = new Blob(audioChunks, { type: 'audio/wav' })
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setAudioData(reader.result as string)
-      }
-      reader.readAsDataURL(audioBlob)
-    }
-
-    newRecorder.start()
-    setRecorder(newRecorder)
-  }
+  };
 
   const stopRecording = () => {
-    recorder?.stop()
-  }
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  };
 
-  // cleanup function to save current canvas when component unmounts
+  const saveAudio = () => {
+    if (audioChunks.length === 0) return;
+
+    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+    const audioUrl = URL.createObjectURL(audioBlob);
+    const link = document.createElement('a');
+    link.href = audioUrl;
+    link.download = 'recorded_audio.webm';
+    link.click();
+
+    setAudioChunks([]);
+  };
+
+  useEffect(() => {
+    const handleRedraw = () => {
+      if (canvasRef.current) {
+        const p5Instance = (window as any).p5instance;
+        if (p5Instance) {
+          p5Instance.redraw();
+        }
+      }
+    };
+    window.addEventListener('redraw', handleRedraw);
+    return () => {
+      window.removeEventListener('redraw', handleRedraw);
+    };
+  }, []);
+
   useEffect(() => {
     return () => {
-      saveCanvasToMongoDB()
-    }
-  }, [])
+      if (canvasRef.current) {
+        canvasRef.current.remove();
+      }
+    };
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <Sketch setup={setup} draw={draw} />
-      <div className="mt-4 space-x-4">
-        <button onClick={saveCanvasToMongoDB} className="px-4 py-2 bg-blue-500 text-white rounded">
-          Submit Answer
+    <div>
+      <div
+        ref={containerRef}
+        style={{
+          position: 'relative',
+          height: '500px',
+          width: '100%',
+          border: '1px solid gray',
+        }}
+      >
+        <Sketch setup={setup} draw={draw} />
+      </div>
+      <div className="mt-4 space-x-4" style={{ textAlign: 'center', marginTop: '10px' }}>
+        <button
+          onClick={switchSection}
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          style={{ marginRight: '10px' }}
+        >
+          {buttonText}
         </button>
-        <button onClick={clearCanvas} className="px-4 py-2 bg-red-500 text-white rounded">
+        <button
+          onClick={clearCanvas}
+          className="px-4 py-2 bg-red-500 text-white rounded"
+          style={{ marginRight: '10px' }}
+        >
           Clear Canvas
         </button>
-        <button onClick={handleAudioRecording} className={`px-4 py-2 ${isRecording ? 'bg-gray-500' : 'bg-green-500'} text-white rounded`}>
-          {isRecording ? 'Stop Recording' : 'Record Audio'}
+        <button
+          onClick={isRecording ? stopRecording : startRecording}
+          className={`px-4 py-2 ${isRecording ? 'bg-yellow-500' : 'bg-green-500'} text-white rounded`}
+          style={{ marginRight: '10px' }}
+        >
+          {isRecording ? 'Stop Recording' : 'Start Recording'}
         </button>
-        <button onClick={() => goToCanvas(currentCanvasIndex - 1)} className="px-4 py-2 bg-gray-400 text-white rounded">
-          Previous Canvas
-        </button>
-        <button onClick={() => {
-          saveCurrentCanvas()
-          goToCanvas(currentCanvasIndex + 1)
-        }} className="px-4 py-2 bg-gray-400 text-white rounded">
-          Next Canvas
+        <button
+          onClick={saveAudio}
+          className="px-4 py-2 bg-purple-500 text-white rounded"
+          disabled={audioChunks.length === 0}
+        >
+          Save Audio
         </button>
       </div>
     </div>
-  )
+  );
 }

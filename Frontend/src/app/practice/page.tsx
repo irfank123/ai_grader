@@ -106,8 +106,10 @@ export default function PracticePage() {
             />
 
             {/* canvas component for user to work on the solution */}
-            <Canvas />
-
+            <div style={{ position: 'relative', height: '500px', border: '1px solid gray' }}>
+              <Canvas />
+            </div>
+            <br></br><br></br><br></br>
             {/* button to submit answer and navigate to feedback */}
             <SubmitButton onClick={handleSubmit} />
           </div>
