@@ -15,34 +15,60 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single("audio");
 
 // Transcribe audio function
-const transcribeAudio = (filePath) => {
-  return new Promise((resolve, reject) => {
-    const options = {
-      mode: "text",
-      pythonOptions: ["-u"],
-      scriptPath: path.join(__dirname, "../../transcribe-anything"),
-      args: [filePath],
-    };
 
-    PythonShell.run("transcribe.py", options, (err, results) => {
-      if (err) return reject(err);
-
-      const folderName = `text_${path.basename(filePath, path.extname(filePath))}`;
-      const outputFolder = path.join(__dirname, "../../transcribe-anything", folderName);
-      const outputFilePath = path.join(outputFolder, "out.txt");
-
-      try {
-        const transcription = fs.readFileSync(outputFilePath, "utf8");
-        resolve(transcription);
-      } catch (readError) {
-        reject(`Failed to read transcription: ${readError.message}`);
-      } finally {
-        fs.unlinkSync(filePath);
-        fs.rmSync(outputFolder, { recursive: true, force: true });
-      }
+// Transcribe audio function using OpenAI API
+async function transcribeAudio(audioFilePath) {
+  try {
+    const transcription = await client.audio.transcriptions.create({
+      model: "whisper-1",
+      file: fs.createReadStream(audioFilePath)
     });
-  });
-};
+    return transcription.text;
+  } catch (error) {
+    console.error(`An error occurred during transcription: ${error}`);
+    throw error;
+  } finally {
+    // Clean up the file after transcription
+    fs.unlinkSync(audioFilePath);
+  }
+}
+
+
+
+
+
+
+
+
+
+// const transcribeAudio = (filePath) => {
+//   return new Promise((resolve, reject) => {
+//     const options = {
+//       mode: "text",
+//       pythonOptions: ["-u"],
+//       scriptPath: path.join(__dirname, "../../transcribe-anything"),
+//       args: [filePath],
+//     };
+
+//     PythonShell.run("transcribe.py", options, (err, results) => {
+//       if (err) return reject(err);
+
+//       const folderName = `text_${path.basename(filePath, path.extname(filePath))}`;
+//       const outputFolder = path.join(__dirname, "../../transcribe-anything", folderName);
+//       const outputFilePath = path.join(outputFolder, "out.txt");
+
+//       try {
+//         const transcription = fs.readFileSync(outputFilePath, "utf8");
+//         resolve(transcription);
+//       } catch (readError) {
+//         reject(`Failed to read transcription: ${readError.message}`);
+//       } finally {
+//         fs.unlinkSync(filePath);
+//         fs.rmSync(outputFolder, { recursive: true, force: true });
+//       }
+//     });
+//   });
+// };
 
 const sendToGrading = async (gradingData) => {
   try {
