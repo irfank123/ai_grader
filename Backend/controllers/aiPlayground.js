@@ -1,3 +1,24 @@
+
+const fs = require('fs');
+const OpenAI = require('openai');
+
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+
+async function transcribeAudio(audioFilePath) {
+    try {
+      const transcription = await client.audio.transcriptions.create({
+        model: "whisper-1",
+        file: fs.createReadStream(audioFilePath)
+      });
+      return transcription.text;
+    } catch (error) {
+      console.error(`An error occurred during transcription: ${error}`);
+      throw error;
+    }
+  }
+
+
 async function gradeSubmission(imagePath, transcription, question, officialAnswer) {
     try {
       const base64Image = fs.readFileSync(imagePath, { encoding: 'base64' });
@@ -47,11 +68,18 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
             ]
           }
         ],
-        max_tokens: 1000
+        max_tokens: 3200
       });
   
       // Parse the JSON response
-      const feedbackObject = JSON.parse(response.choices[0].message.content);
+      //const feedbackObject = JSON.parse(response.choices[0].message.content);
+      // Clean the response content by removing Markdown code block markers (` ```json`)
+      let cleanedContent = response.choices[0].message.content;
+      cleanedContent = cleanedContent.replace(/```json/g, '').replace(/```/g, ''); // Remove the ```json and closing ```
+
+        // Now parse the cleaned content as JSON
+      const feedbackObject = JSON.parse(cleanedContent);
+
       return feedbackObject;
     } catch (error) {
       console.error("An error occurred during grading:", error);
@@ -83,10 +111,11 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
   
   // Usage
   // Retrive the things below from mongo db
-  const imagePath = '/path/to/student/solution.jpg';
-  const audioPath = '/path/to/student/explanation.mp3';
-  const question = "Solve the quadratic equation: x^2 + 5x + 6 = 0";
-  const officialAnswer = "x = -2 or x = -3";
+  const imagePath = '/Users/irfank/Downloads/testvideodomainlastframe.png';
+  const audioPath = '/Users/irfank/Downloads/domainvideo.mp3';
+  const question = "Find the domain of the function: f(x) = x^4 / (x^2 + x - 42)";
+  const officialAnswer = "(-∞, -7) ∪ (-7, 6) ∪ (6, ∞)";
+
   
   processSubmission(imagePath, audioPath, question, officialAnswer)
 .then(feedback => {
@@ -117,10 +146,9 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
 
 
 
-// const fs = require('fs');
-// const OpenAI = require('openai');
 
-// const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+
 
 // async function transcribeAudio(audioFilePath) {
 //   try {
