@@ -26,8 +26,8 @@ const getOneQuestion = async (req, res) => {
 // create a question
 const createQuestion = async (req, res) => {
   try {
-    const { question, answer, module } = req.body; // get the new question fields fro the request body
-    const newQuestion = new Question({ question, answer, module }); // create the new question object with these fields
+    const { index, question, topic, answer, ai_solution } = req.body; // get the new question fields fro the request body
+    const newQuestion = new Question({ index, question, topic, answer, ai_solution }); // create the new question object with these fields
     await newQuestion.save();
     res.status(201).json(newQuestion);
   } catch (error) {
