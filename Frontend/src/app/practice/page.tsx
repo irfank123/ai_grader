@@ -112,15 +112,10 @@ export default function PracticePage() {
                 onPreviousQuestion={handlePreviousQuestion}
                 onNextQuestion={handleNextQuestion}
               />
-
-              <div style={{ position: "relative", height: "500px", border: "1px solid gray" }}>
                 <Canvas />
               </div>
               <br />
-              <br />
-              <br />
               <SubmitButton onClick={handleSubmit} />
-            </div>
           </div>
         </div>
 
