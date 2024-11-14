@@ -99,6 +99,20 @@ Our **Node js** backend provides the following API endpoints for exams, question
 4. **Patch**: Update an existing resource (exam, question, response, or user) with new information.
 5. **Delete**: Remove a specific resource (exam, question, response, or user) based on its ID.
 
+### Question and Answer Endpoints (Implemented Endpoints)
+
+1. **GET /api/v1/questions** - Fetches a list of questions for the Practice and Feedback pages. This endpoint is called by the frontend to display each question during the practice session.
+   
+2. **POST /api/v1/responses** - Allows users to submit their answers, which are then evaluated. This would be triggered by the `SubmitButton` in the `PracticePage` component after a question is answered.
+
+3. **GET /api/v1/responses/{user_id}** - Retrieves the user's responses, including feedback and scores. This is relevant to the `FeedbackPage`, where feedback on the user’s submitted answers is displayed.
+
+### Additional Authentication Endpoints
+
+1. **POST /auth/login** - Authenticates users and issues a token, enabling access to restricted endpoints.
+2. **POST /auth/register** - Registers new users to the platform.
+3. **GET /auth/validate** - Validates user tokens for session management, securing interactions between frontend and backend.
+
 ---
 
 ## **Postman Collection** 🚀
