@@ -17,7 +17,7 @@ The project is made up of several main components:
 
 1. **MongoDB Database** 🧑‍💻: Stores questions, user responses, and related metadata.
 2. **Backend API (Node js)** 🛠️: Handles question retrieval, answer submission, and response evaluation.
-3. **Frontend (React)** 🌱: The user-friendly interface for students to take exams and submit their answers.
+3. **Frontend (Next js)** 🌱: The user-friendly interface for students to take exams and submit their answers.
 
 ---
 
@@ -280,6 +280,7 @@ cd ai_grader
   cd backend
   npm install
   node server
+  npm start -- --port 3000
   ```
 
 
@@ -291,7 +292,7 @@ cd ai_grader
   ```
 - Start the React frontend:
   ```bash
-  npm start
+  npm start -- --port 3001
   ```
 
 ### **4. MongoDB Setup** 📀
