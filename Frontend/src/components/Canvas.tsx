@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
 import p5Types from 'p5';
@@ -15,17 +15,34 @@ export default function Canvas() {
   const [currentSection, setCurrentSection] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
-  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const [buttonText, setButtonText] = useState("Next Section");
   const p5InstanceRef = useRef<p5Types | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const processorRef = useRef<ScriptProcessorNode | null>(null);
+  const audioChunksRef = useRef<Float32Array[]>([]);
+
+  const preventScroll = useCallback((e: TouchEvent) => {
+    if (isDrawing) {
+      e.preventDefault();
+    }
+  }, [isDrawing]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      container.style.touchAction = isDrawing ? 'none' : 'auto';
+      container.style.touchAction = 'none';
     }
-  }, [isDrawing]);
+
+    document.body.addEventListener('touchmove', preventScroll, { passive: false });
+
+    return () => {
+      document.body.removeEventListener('touchmove', preventScroll);
+      if (isRecording) {
+        stopRecording();
+      }
+    };
+  }, [isDrawing, preventScroll, isRecording]);
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5InstanceRef.current = p5;
@@ -114,41 +131,103 @@ export default function Canvas() {
 
   const startRecording = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = mediaRecorder;
+      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      streamRef.current = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const source = audioContextRef.current.createMediaStreamSource(streamRef.current);
+      processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);
 
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          setAudioChunks((chunks) => [...chunks, event.data]);
-        }
+      source.connect(processorRef.current);
+      processorRef.current.connect(audioContextRef.current.destination);
+
+      audioChunksRef.current = [];
+
+      processorRef.current.onaudioprocess = (e) => {
+        const channel = e.inputBuffer.getChannelData(0);
+        audioChunksRef.current.push(new Float32Array(channel));
       };
 
-      mediaRecorder.start();
       setIsRecording(true);
     } catch (error) {
-      console.error('Error accessing microphone:', error);
+      console.error('Error starting recording:', error);
     }
   };
 
   const stopRecording = () => {
-    if (mediaRecorderRef.current && isRecording) {
-      mediaRecorderRef.current.stop();
-      setIsRecording(false);
+    if (processorRef.current && audioContextRef.current) {
+      processorRef.current.disconnect();
+      audioContextRef.current.close();
     }
+
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+    }
+
+    setIsRecording(false);
+
+    // Convert audio data to WAV format
+    const audioData = mergeBuffers(audioChunksRef.current);
+    const wavBlob = createWaveBlob(audioData);
+
+    // Create download link
+    const url = URL.createObjectURL(wavBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'recorded_audio.wav';
+    link.click();
   };
 
-  const saveAudio = () => {
-    if (audioChunks.length === 0) return;
+  const mergeBuffers = (bufferArray: Float32Array[]): Float32Array => {
+    let totalLength = 0;
+    for (let buffer of bufferArray) {
+      totalLength += buffer.length;
+    }
+    const result = new Float32Array(totalLength);
+    let offset = 0;
+    for (let buffer of bufferArray) {
+      result.set(buffer, offset);
+      offset += buffer.length;
+    }
+    return result;
+  };
 
-    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-    const audioUrl = URL.createObjectURL(audioBlob);
-    const link = document.createElement('a');
-    link.href = audioUrl;
-    link.download = 'recorded_audio.webm';
-    link.click();
+  const createWaveBlob = (audioData: Float32Array): Blob => {
+    const buffer = new ArrayBuffer(44 + audioData.length * 2);
+    const view = new DataView(buffer);
 
-    setAudioChunks([]);
+    // RIFF chunk descriptor
+    writeUTFBytes(view, 0, 'RIFF');
+    view.setUint32(4, 36 + audioData.length * 2, true);
+    writeUTFBytes(view, 8, 'WAVE');
+
+    // FMT sub-chunk
+    writeUTFBytes(view, 12, 'fmt ');
+    view.setUint32(16, 16, true); // subchunk1size
+    view.setUint16(20, 1, true); // audio format
+    view.setUint16(22, 1, true); // num of channels
+    view.setUint32(24, 44100, true); // sample rate
+    view.setUint32(28, 44100 * 2, true); // byte rate
+    view.setUint16(32, 2, true); // block align
+    view.setUint16(34, 16, true); // bits per sample
+
+    // Data sub-chunk
+    writeUTFBytes(view, 36, 'data');
+    view.setUint32(40, audioData.length * 2, true);
+
+    // Write PCM
+    const length = audioData.length;
+    const index = 44;
+    const volume = 1;
+    for (let i = 0; i < length; i++) {
+      view.setInt16(index + i * 2, audioData[i] * (0x7FFF * volume), true);
+    }
+
+    return new Blob([buffer], { type: 'audio/wav' });
+  };
+
+  const writeUTFBytes = (view: DataView, offset: number, string: string) => {
+    for (let i = 0; i < string.length; i++) {
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
   };
 
   const downloadImage = () => {
@@ -161,17 +240,19 @@ export default function Canvas() {
     link.click();
   };
 
+  const saveAll = () => {
+    downloadImage();
+    if (isRecording) {
+      stopRecording();
+    }
+  };
+
   return (
-    <div>
+    <div className="flex flex-col items-center w-full max-w-4xl mx-auto p-4">
       <div
         ref={containerRef}
-        style={{
-          position: 'relative',
-          height: '500px',
-          width: '100%',
-          border: '1px solid gray',
-          overflow: 'hidden',
-        }}
+        className="w-full border border-gray-300 rounded-lg overflow-hidden"
+        style={{ height: '500px' }}
       >
         <Sketch 
           setup={setup} 
@@ -182,7 +263,7 @@ export default function Canvas() {
           touchEnded={touchEnded}
         />
       </div>
-      <div className="mt-4 space-x-4" style={{ textAlign: 'center', marginTop: '10px' }}>
+      <div className="flex flex-wrap justify-center gap-2 mt-4">
         <Button onClick={switchSection} variant="secondary">
           {buttonText}
         </Button>
@@ -195,15 +276,8 @@ export default function Canvas() {
         >
           {isRecording ? 'Stop Recording' : 'Start Recording'}
         </Button>
-        <Button
-          onClick={saveAudio}
-          variant="secondary"
-          disabled={audioChunks.length === 0}
-        >
-          Save Audio
-        </Button>
-        <Button onClick={downloadImage} variant="secondary">
-          Download Image
+        <Button onClick={saveAll} variant="default">
+          Save All
         </Button>
       </div>
     </div>
