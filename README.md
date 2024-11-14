@@ -87,6 +87,28 @@ We use **MongoDB** to manage questions and user responses. Below are the main co
    }
    ```
 
+
+## AI Grading System
+
+This project includes an AI-powered grading feature that evaluates both written and spoken responses from students. This system uses OpenAI's Whisper model for audio transcription and GPT-4 for answer grading. The grading assessment includes detailed feedback and a letter grade, enhancing students' understanding of Pre-Calculus concepts.
+
+### Grading Workflow
+
+1. **Transcription**: Converts students' verbal explanations into text using OpenAI's Whisper API.
+2. **Grading Assessment**: Evaluates both the transcribed verbal response and an image of the written answer.
+   - **Input**: The system takes the question, official answer, student's verbal transcription, and an image of the student’s written solution.
+   - **Output**: A JSON object with the fields:
+     - **grade**: Letter grade (A, B, C, D, or F, with + or - if applicable).
+     - **writtenFeedback**: Feedback on the written solution’s strengths and areas for improvement.
+     - **spokenFeedback**: Feedback on clarity, completeness, and demonstrated understanding in the verbal explanation.
+
+### Example Usage
+
+A function `processSubmission` demonstrates the grading workflow:
+- It transcribes audio with `transcribeAudio`.
+- Calls `gradeSubmission` to perform grading.
+- Logs and returns the grading result, which can be saved to the database.
+
 ---
 
 ## **API Endpoints** 🛡️
@@ -99,7 +121,7 @@ Our **Node js** backend provides the following API endpoints for exams, question
 4. **Patch**: Update an existing resource (exam, question, response, or user) with new information.
 5. **Delete**: Remove a specific resource (exam, question, response, or user) based on its ID.
 
-### Question and Answer Endpoints (Implemented Endpoints)
+### Question and Answer Endpoints
 
 1. **GET /api/v1/questions** - Fetches a list of questions for the Practice and Feedback pages. This endpoint is called by the frontend to display each question during the practice session.
    
@@ -107,11 +129,16 @@ Our **Node js** backend provides the following API endpoints for exams, question
 
 3. **GET /api/v1/responses/{user_id}** - Retrieves the user's responses, including feedback and scores. This is relevant to the `FeedbackPage`, where feedback on the user’s submitted answers is displayed.
 
-### Additional Authentication Endpoints
+###  Authentication Endpoints
 
 1. **POST /auth/login** - Authenticates users and issues a token, enabling access to restricted endpoints.
 2. **POST /auth/register** - Registers new users to the platform.
 3. **GET /auth/validate** - Validates user tokens for session management, securing interactions between frontend and backend.
+
+### API Endpoints for Grading
+
+1. **POST /api/v1/transcribe** - Accepts an audio file for transcription using Whisper.
+2. **POST /api/v1/grade** - Accepts an image of the answer, the transcription, and question details to generate a grade and feedback using GPT-4.
 
 ---
 
