@@ -185,9 +185,23 @@ export default function Canvas() {
     }
   };
 
-  const saveImage = () => {
-    downloadImage();
+  // const saveImage = () => {
+  //   downloadImage();
+  // };
+  const saveImage = async () => {
+    const canvasBlob = await getCanvasBlob();
+    if (canvasBlob) {
+      const url = URL.createObjectURL(canvasBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'canvas_sections.png';
+      link.click();
+      URL.revokeObjectURL(url);
+    } else {
+      console.error('Failed to retrieve canvas content.');
+    }
   };
+  
 
   const handleRecordingToggle = () => {
     if (isRecording) {
@@ -196,6 +210,19 @@ export default function Canvas() {
       startRecording();
     }
   };
+
+  const getCanvasBlob = (): Promise<Blob | null> => {
+    return new Promise((resolve) => {
+      if (canvasRef.current) {
+        canvasRef.current.toBlob((blob) => {
+          resolve(blob);
+        }, 'image/png');
+      } else {
+        resolve(null);
+      }
+    });
+  };
+  
 
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto p-4">
@@ -236,3 +263,5 @@ export default function Canvas() {
     </div>
   );
 }
+
+
