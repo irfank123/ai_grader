@@ -61,10 +61,51 @@ export default function PracticePage() {
     loadQuestions();
   }, []);
 
-  const handleSubmit = () => {
-    localStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
-    router.push("/feedback");
+  // const handleSubmit = () => {
+  //   localStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
+  //   router.push("/feedback");
+  // };
+  const handleSubmit = async () => {
+    // Reference to the Canvas component
+    const canvasElement = document.querySelector('canvas');
+  
+    if (canvasElement) {
+      // Convert the canvas content to a Blob
+      canvasElement.toBlob(async (blob) => {
+        if (blob) {
+          const formData = new FormData();
+          formData.append('file', blob, 'Q1111____canvasImage.png'); // Append the Blob as a file
+  
+          try {
+            // Send the canvas image to the backend
+            const response = await fetch('http://localhost:3000/api/v1/upload', {
+              method: 'POST',
+              body: formData,
+            });
+  
+            const data = await response.json();
+  
+            if (response.ok) {
+              console.log('Image uploaded successfully:', data.publicUrl);
+              // Store the current question index
+              localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
+              // Redirect to feedback page
+              router.push('/feedback');
+            } else {
+              console.error('Failed to upload image:', data.message || 'Unknown error');
+            }
+          } catch (error) {
+            console.error('Error uploading image:', error);
+          }
+        } else {
+          console.error('Failed to retrieve canvas content.');
+        }
+      }, 'image/png');
+    } else {
+      console.error('Canvas element not found.');
+    }
   };
+  
 
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => {

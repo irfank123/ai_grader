@@ -166,15 +166,15 @@ export default function Canvas() {
     URL.revokeObjectURL(url);
   };
 
-  const downloadImage = () => {
-    if (!canvasRef.current) return;
+  // const downloadImage = () => {
+  //   if (!canvasRef.current) return;
 
-    const canvas = canvasRef.current;
-    const link = document.createElement('a');
-    link.download = 'canvas_sections.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  };
+  //   const canvas = canvasRef.current;
+  //   const link = document.createElement('a');
+  //   link.download = 'canvas_sections.png';
+  //   link.href = canvas.toDataURL('image/png');
+  //   link.click();
+  // };
 
   const saveAudio = () => {
     if (audioChunksRef.current.length > 0) {
@@ -188,19 +188,46 @@ export default function Canvas() {
   // const saveImage = () => {
   //   downloadImage();
   // };
+  // const saveImage = async () => {
+  //   const canvasBlob = await getCanvasBlob();
+  //   if (canvasBlob) {
+  //     const url = URL.createObjectURL(canvasBlob);
+  //     const link = document.createElement('a');
+  //     link.href = url;
+  //     link.download = 'canvas_sections.png';
+  //     link.click();
+  //     URL.revokeObjectURL(url);
+  //   } else {
+  //     console.error('Failed to retrieve canvas content.');
+  //   }
+  // };
+  
   const saveImage = async () => {
     const canvasBlob = await getCanvasBlob();
     if (canvasBlob) {
-      const url = URL.createObjectURL(canvasBlob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'canvas_sections.png';
-      link.click();
-      URL.revokeObjectURL(url);
+      const formData = new FormData();
+      formData.append('file', canvasBlob, 'canvasImage.png');
+  
+      try {
+        const response = await fetch('http://localhost:3000/api/v1/upload', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        const data = await response.json();
+        if (response.ok) {
+          console.log('Image uploaded successfully:', data.publicUrl);
+        } else {
+          console.error('Failed to upload image:', data.message || 'Unknown error');
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
     } else {
       console.error('Failed to retrieve canvas content.');
     }
   };
+  
   
 
   const handleRecordingToggle = () => {
