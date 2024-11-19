@@ -176,14 +176,46 @@ export default function Canvas() {
   //   link.click();
   // };
 
-  const saveAudio = () => {
+  // const saveAudio = () => {
+  //   if (audioChunksRef.current.length > 0) {
+  //     const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+  //     downloadFile(audioBlob, 'recorded_audio.wav');
+  //   } else {
+  //     console.log('No audio recorded yet');
+  //   }
+  // };
+
+  const saveAudio = async () => {
     if (audioChunksRef.current.length > 0) {
       const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
-      downloadFile(audioBlob, 'recorded_audio.wav');
+  
+      const formData = new FormData();
+      const timestamp = Date.now();
+      //formData.append('file', audioBlob, '8888recorded_audio.mp3');
+      formData.append('file', audioBlob, `${timestamp}_nopw___tryryryrecorded_audio.wav`);
+  
+      try {
+        const response = await fetch('http://localhost:3000/api/v1/upload/audio', {
+          method: 'POST',
+          body: formData,
+        });
+        downloadFile(audioBlob, 'recorded_audio.wav');
+  
+        const data = await response.json();
+        if (response.ok) {
+          console.log('Audio uploaded successfully:', data.publicUrl);
+        } else {
+          console.error('Failed to upload audio:', data.message || 'Unknown error');
+        }
+      } catch (error) {
+        console.error('Error uploading audio:', error);
+      }
     } else {
       console.log('No audio recorded yet');
     }
+
   };
+  
 
   // const saveImage = () => {
   //   downloadImage();
@@ -206,10 +238,10 @@ export default function Canvas() {
     const canvasBlob = await getCanvasBlob();
     if (canvasBlob) {
       const formData = new FormData();
-      formData.append('file', canvasBlob, 'canvasImage.png');
+      formData.append('file', canvasBlob, 'c333anvasImage.png');
   
       try {
-        const response = await fetch('http://localhost:3000/api/v1/upload', {
+        const response = await fetch('http://localhost:3000/api/v1/upload/image', {
           method: 'POST',
           body: formData,
         });

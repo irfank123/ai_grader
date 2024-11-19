@@ -74,11 +74,13 @@ export default function PracticePage() {
       canvasElement.toBlob(async (blob) => {
         if (blob) {
           const formData = new FormData();
-          formData.append('file', blob, 'Q1111____canvasImage.png'); // Append the Blob as a file
+          console.log(currentQuestionIndex);
+          
+          formData.append('file', blob, `${questions[currentQuestionIndex]._id}.png`); // Append the Blob as a file
   
           try {
             // Send the canvas image to the backend
-            const response = await fetch('http://localhost:3000/api/v1/upload', {
+            const response = await fetch('http://localhost:3000/api/v1/upload/image', {
               method: 'POST',
               body: formData,
             });
