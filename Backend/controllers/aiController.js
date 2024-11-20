@@ -1,32 +1,32 @@
-const fs = require('fs');
-const OpenAI = require('openai');
+const fs = require("fs");
+const OpenAI = require("openai");
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 //fucntion to transcribe audio to text with the help openai api
 async function transcribeAudio(audioFilePath) {
-    try {
-      const transcription = await client.audio.transcriptions.create({
-        model: "whisper-1",
-        file: fs.createReadStream(audioFilePath)
-      });
-      return transcription.text;
-    } catch (error) {
-      console.error(`An error occurred during transcription: ${error}`);
-      throw error;
-    }
+  try {
+    const transcription = await client.audio.transcriptions.create({
+      model: "whisper-1",
+      file: fs.createReadStream(audioFilePath),
+    });
+    return transcription.text;
+  } catch (error) {
+    console.error(`An error occurred during transcription: ${error}`);
+    throw error;
   }
+}
 
 // function that uses openai api and question details to grade the answer
 async function gradeSubmission(imagePath, transcription, question, officialAnswer) {
-    try {
-      const base64Image = fs.readFileSync(imagePath, { encoding: 'base64' });
-      
-      const response = await client.chat.completions.create({
-        model: "gpt-4o",
-        messages: [
-          {
-            role: "system",
-            content: `You are an AI grading assistant for a precalculus course in high school and university.Your task is to analyze a student's written work (image) and verbal explanation for a math problem. Provide a comprehensive assessment that includes:
+  try {
+    const base64Image = fs.readFileSync(imagePath, { encoding: "base64" });
+
+    const response = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content: `You are an AI grading assistant for a precalculus course in high school and university.Your task is to analyze a student's written work (image) and verbal explanation for a math problem. Provide a comprehensive assessment that includes:
 
                     1. An overall letter grade (A, B, C, D, F with + or - if applicable)
                     2. Detailed feedback on the written work
@@ -44,61 +44,58 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
 
                     Format your response as a JSON object with keys: 'grade', 'writtenFeedback', and 'spokenFeedback'. Ensure each feedback section addresses conceptual understanding, correct application of methods, and areas for improvement.
             
-            `
-          },
-          {
-            role: "user",
-            content: [
-              { 
-                type: "text", 
-                text: `Question: ${question}\n\nOfficial Answer: ${officialAnswer}\n\nStudent's Verbal Explanation: ${transcription}\n\nProvide a comprehensive assessment based on both the written solution in the image and the verbal explanation. Consider accuracy, methodology, presentation, and clarity. Structure your response as follows:\n\n{
+            `,
+        },
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: `Question: ${question}\n\nOfficial Answer: ${officialAnswer}\n\nStudent's Verbal Explanation: ${transcription}\n\nProvide a comprehensive assessment based on both the written solution in the image and the verbal explanation. Consider accuracy, methodology, presentation, and clarity. Structure your response as follows:\n\n{
     "grade": "A letter grade (A, B, C, D, or F, with + or - if applicable)",
     "writtenFeedback": "Detailed feedback on the written solution, including strengths, weaknesses, and suggestions for improvement",
     "spokenFeedback": "Evaluation of the verbal explanation, including clarity, completeness, and understanding demonstrated"
-  }\n\nEnsure your response is valid JSON.`
+  }\n\nEnsure your response is valid JSON.`,
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: `data:image/jpeg;base64,${base64Image}`,
               },
-              {
-                type: "image_url",
-                image_url: {
-                  url: `data:image/jpeg;base64,${base64Image}`
-                }
-              }
-            ]
-          }
-        ],
-        max_tokens: 3200
-      });
-  
-      // Parse the JSON response
-      //const feedbackObject = JSON.parse(response.choices[0].message.content);
-      // Clean the response content by removing Markdown code block markers (` ```json`)
-      let cleanedContent = response.choices[0].message.content;
-      cleanedContent = cleanedContent.replace(/```json/g, '').replace(/```/g, ''); // Remove the ```json and closing ```
+            },
+          ],
+        },
+      ],
+      max_tokens: 3200,
+    });
 
-        // Now parse the cleaned content as JSON
-      const feedbackObject = JSON.parse(cleanedContent);
+    // Parse the JSON response
+    //const feedbackObject = JSON.parse(response.choices[0].message.content);
+    // Clean the response content by removing Markdown code block markers (` ```json`)
+    let cleanedContent = response.choices[0].message.content;
+    cleanedContent = cleanedContent.replace(/```json/g, "").replace(/```/g, ""); // Remove the ```json and closing ```
 
-      return feedbackObject;
-    } catch (error) {
-      console.error("An error occurred during grading:", error);
-      throw error;
-    }
+    // Now parse the cleaned content as JSON
+    const feedbackObject = JSON.parse(cleanedContent);
+
+    return feedbackObject;
+  } catch (error) {
+    console.error("An error occurred during grading:", error);
+    throw error;
   }
-
-
-
+}
 
 //   async function processSubmission(imagePath, audioPath, question, officialAnswer) {
 //     try {
 //       // Step 1: Transcribe the audio
 //       const transcription = await transcribeAudio(audioPath);
-      
+
 //       // Step 2: Grade the submission
 //       const feedback = await gradeSubmission(imagePath, transcription, question, officialAnswer);
-      
+
 //       console.log("Grading Feedback:");
 //       console.log(JSON.stringify(feedback, null, 2));
-      
+
 //       // Here you can save the feedback object directly to your database
 //       return feedback;
 //     } catch (error) {
@@ -106,17 +103,15 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
 //       throw error;
 //     }
 //   }
-  
+
 //   // Usage
 //   // Retrive the things below from mongo db
 //   const imagePath = '/Users/irfank/Downloads/testvideodomainlastframe.png';
 //   const audioPath = '/Users/irfank/Downloads/domainvideo.mp3';
 
-
 //   const question = "Find the domain of the function: f(x) = x^4 / (x^2 + x - 42)";
 //   const officialAnswer = "(-∞, -7) ∪ (-7, 6) ∪ (6, ∞)";
 
-  
 //   processSubmission(imagePath, audioPath, question, officialAnswer)
 // .then(feedback => {
 //       // feedback object will have the structure:
@@ -125,26 +120,27 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
 //       //   writtenFeedback: "The solution is correct and well-presented...",
 //       //   spokenFeedback: "The verbal explanation was clear and demonstrated good understanding..."
 //       // }
-      
+
 //       // Save to database or send response to client
 //     })
 //     .catch(error => {
 //       // Handle any errors
 //     });
 
-
-const questionController = require("./questionController")
+const questionController = require("./questionController");
+const responseController = require("./responseController");
 // const fs = require('fs');
-const path = require('path');
-const { Storage } = require('@google-cloud/storage');
+const path = require("path");
+const { Storage } = require("@google-cloud/storage");
 
-const storage = new Storage({ keyFilename: '/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json' });
-const bucketName = 'ai-grader-storage';
+const storage = new Storage({
+  keyFilename: "/Users/Muneeb1/Downloads/ppds-f-24-470a0a2126e6.json",
+});
 
 // Function to list files in the GCS bucket
 async function listFilesInBucket(bucketName) {
   const [files] = await storage.bucket(bucketName).getFiles();
-  return files.map(file => file.name); // Return the filenames
+  return files.map((file) => file.name); // Return the filenames
 }
 
 // Function to download a file from GCS and assign a name based on its extension
@@ -154,7 +150,7 @@ async function downloadFileFromGCS(bucketName, srcFilename) {
 
   // Extract the file extension
   const fileExtension = path.extname(srcFilename);
-  const fileType = fileExtension === '.png' || fileExtension === '.jpg' ? 'image' : 'audio';
+  const fileType = fileExtension === ".png" || fileExtension === ".jpg" ? "image" : "audio";
   const destination = path.resolve(__dirname, `${fileType}${fileExtension}`);
 
   await file.download({ destination });
@@ -173,8 +169,8 @@ async function processSubmission(bucketName) {
     }
 
     function stripExtension(filename) {
-      return filename.split('.').slice(0, -1).join('.');
-  }
+      return filename.split(".").slice(0, -1).join(".");
+    }
 
     // Step 2: Identify image and audio files based on their extensions
     let imageFilename = null;
@@ -182,15 +178,15 @@ async function processSubmission(bucketName) {
 
     for (const filename of filenames) {
       const extension = path.extname(filename);
-      if (extension === '.png' || extension === '.jpg') {
+      if (extension === ".png" || extension === ".jpg") {
         imageFilename = filename;
-      } else if (extension === '.mp3' || extension === '.wav') {
+      } else if (extension === ".mp3" || extension === ".wav") {
         audioFilename = filename;
       }
     }
 
     if (!imageFilename || !audioFilename) {
-      throw new Error('Could not identify both image and audio files in the bucket.');
+      throw new Error("Could not identify both image and audio files in the bucket.");
     }
 
     // Step 3: Download files
@@ -199,7 +195,7 @@ async function processSubmission(bucketName) {
 
     // Step 4: Transcribe the audio
     const transcription = await transcribeAudio(audioPath);
-    image__Filename = stripExtension(imageFilename)
+    image__Filename = stripExtension(imageFilename);
     // Example usage
     let question;
     await new Promise((resolve) => {
@@ -222,7 +218,12 @@ async function processSubmission(bucketName) {
     // "(-∞, -7) ∪ (-7, 6) ∪ (6, ∞)";
 
     // Step 5: Grade the submission
-    const feedback = await gradeSubmission(imagePath, transcription, question.question, officialAnswer);
+    const feedback = await gradeSubmission(
+      imagePath,
+      transcription,
+      question.question,
+      officialAnswer
+    );
 
     console.log("Grading Feedback:");
     console.log(JSON.stringify(feedback, null, 2));
@@ -238,36 +239,32 @@ async function processSubmission(bucketName) {
   }
 }
 
+// const express = require("express");
+// const router = express.Router();
 
+// // processSubmission(bucketName, question, officialAnswer)
+// //   .then(feedback => {
+// //     console.log("Feedback:", feedback);
+// //   })
+// //   .catch(error => {
+// //     console.error("Error:", error);
+// //   });
 
-const express = require('express');
-const router = express.Router();
+// router.post("/", async (req, res) => {
+//   try {
+//     const feedback = await processSubmission(bucketName);
+//     res.json(feedback);
+//   } catch (error) {
+//     console.error("Error processing submission:", error);
+//     res.status(500).json({ error: "An error occurred while processing the submission" });
+//   }
+// });
 
-// processSubmission(bucketName, question, officialAnswer)
-//   .then(feedback => {
-//     console.log("Feedback:", feedback);
-//   })
-//   .catch(error => {
-//     console.error("Error:", error);
-//   });
-
-router.post('/', async (req, res) => {
-  try {
-    const feedback = await processSubmission(bucketName);
-    res.json(feedback);
-  } catch (error) {
-    console.error("Error processing submission:", error);
-    res.status(500).json({ error: "An error occurred while processing the submission" });
-  }
-});
-
-module.exports = router;
+// module.exports = router;
 
 // // Usage
 // const imageFilename = 'path/in/gcs/image.png';
 // const audioFilename = 'path/in/gcs/audio.mp3';
-
-
 
 // processSubmission(imageFilename, audioFilename, question, officialAnswer)
 //   .then(feedback => {
@@ -277,5 +274,6 @@ module.exports = router;
 //     console.error("Error:", error);
 //   });
 
-
-
+module.exports = {
+  processSubmission,
+};

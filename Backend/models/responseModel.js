@@ -22,10 +22,9 @@ const responseSchema = new mongoose.Schema(
     },
     user_speech_to_text: {
       type: String,
-      required: true,
     },
     grade: {
-      type: Number,
+      type: String,
       required: true,
     },
   },

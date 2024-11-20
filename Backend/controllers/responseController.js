@@ -1,4 +1,6 @@
 const Response = require("../models/responseModel");
+const User = require("../models/userModel");
+const Question = require("../models/questionModel");
 const mongoose = require("mongoose");
 
 // get all responses
@@ -25,27 +27,44 @@ const getOneResponse = async (req, res) => {
 // create a response
 const createResponse = async (req, res) => {
   try {
-    const { user_id, question_id, submitted_answer, speech_to_text, score } = req.body; // get the new response fields fro the request body
+    const { user_id, question_id, gpt_written_feedback, gpt_spoken_feedback, grade } = req.body;
+
+    if (
+      !user_id ||
+      !question_id ||
+      !gpt_written_feedback ||
+      !gpt_spoken_feedback ||
+      grade === undefined
+    ) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
 
     // check if the referenced User and Question exist
     const userExists = await User.findById(user_id);
     const questionExists = await Question.findById(question_id);
 
     if (!userExists || !questionExists) {
-      return res.status(404).send("User or Question not found");
+      return res.status(404).json({ message: "User or Question not found" });
     }
 
     const newResponse = new Response({
       user_id,
       question_id,
-      submitted_answer,
-      speech_to_text,
-      score,
-    }); // create the new response object with these fields
-    await newResponse.save();
-    res.status(201).json(newResponse);
+      gpt_written_feedback,
+      gpt_spoken_feedback,
+      grade,
+    });
+
+    const savedResponse = await newResponse.save();
+
+    res.status(201).json(savedResponse);
   } catch (error) {
-    res.status(500).send("Failed to create response: " + error.message);
+    console.error("Error creating response:", error);
+    res.status(500).json({
+      message: "Failed to create response",
+      error: error.message,
+      stack: error.stack,
+    });
   }
 };
 

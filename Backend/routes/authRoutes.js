@@ -9,7 +9,7 @@ authRouter.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
-    res.redirect("http://localhost:3001/practice");
+    res.redirect(`http://localhost:3001/login?userId=${req.user._id}`);
   }
 );
 

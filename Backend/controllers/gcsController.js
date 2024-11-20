@@ -42,15 +42,16 @@
 
 // module.exports = router;
 
+// const express = require('express');
+const multer = require("multer");
+const { Storage } = require("@google-cloud/storage");
+const path = require("path");
 
-const express = require('express');
-const multer = require('multer');
-const { Storage } = require('@google-cloud/storage');
-const path = require('path');
-
-const router = express.Router();
-const storage = new Storage({ keyFilename: '/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json' });
-const bucket = storage.bucket('ai-grader-storage');
+// const router = express.Router();
+const storage = new Storage({
+  keyFilename: "/Users/Muneeb1/Downloads/ppds-f-24-470a0a2126e6.json",
+});
+const bucket = storage.bucket("ai-grader-storage");
 
 // Multer configuration for memory storage
 const upload = multer({
@@ -62,7 +63,7 @@ const upload = multer({
 async function uploadToGCS(file, res) {
   try {
     if (!file) {
-      return res.status(400).send('No file uploaded.');
+      return res.status(400).send("No file uploaded.");
     }
 
     const blob = bucket.file(file.originalname);
@@ -71,11 +72,11 @@ async function uploadToGCS(file, res) {
       contentType: file.mimetype,
     });
 
-    blobStream.on('error', (err) => {
+    blobStream.on("error", (err) => {
       res.status(500).send({ message: err.message });
     });
 
-    blobStream.on('finish', () => {
+    blobStream.on("finish", () => {
       const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
       res.status(200).send({ publicUrl });
     });
@@ -86,15 +87,18 @@ async function uploadToGCS(file, res) {
   }
 }
 
-// Route for image uploads
-router.post('/upload/image', upload.single('file'), (req, res) => {
-  uploadToGCS(req.file, res);
-});
+// // Route for image uploads
+// router.post('/upload/image', upload.single('file'), (req, res) => {
+//   uploadToGCS(req.file, res);
+// });
 
-// Route for audio uploads
-router.post('/upload/audio', upload.single('file'), (req, res) => {
-  uploadToGCS(req.file, res);
-});
+// // Route for audio uploads
+// router.post('/upload/audio', upload.single('file'), (req, res) => {
+//   uploadToGCS(req.file, res);
+// });
 
-module.exports = router;
-
+// module.exports = router;
+module.exports = {
+  uploadToGCS,
+  upload,
+};
