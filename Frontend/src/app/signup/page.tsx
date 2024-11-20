@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
@@ -13,6 +13,16 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Check if we have a userId from Google OAuth callback
+    const userId = searchParams.get("userId");
+    if (userId) {
+      localStorage.setItem("userId", userId);
+      router.push("/practice");
+    }
+  }, [router, searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +45,7 @@ export default function SignUp() {
       if (response.ok) {
         const data = await response.json();
         console.log("Sign up successful:", data);
+        localStorage.setItem("userId", data.user.id);
         router.push("/practice");
       } else {
         const errorData = await response.json();

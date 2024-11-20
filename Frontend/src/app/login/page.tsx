@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
@@ -11,6 +11,16 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Check if we have a userId from Google OAuth callback
+    const userId = searchParams.get("userId");
+    if (userId) {
+      localStorage.setItem("userId", userId);
+      router.push("/practice");
+    }
+  }, [router, searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,12 +33,11 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-        credentials: "include", // This is important for cookies to be sent
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Login successful:", data);
+        localStorage.setItem("userId", data.user.id);
         router.push("/practice");
       } else {
         const errorData = await response.json();
@@ -92,26 +101,6 @@ export default function Login() {
               </div>
             </div>
 
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center'>
-                <input
-                  id='remember-me'
-                  name='remember-me'
-                  type='checkbox'
-                  className='h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded'
-                />
-                <label htmlFor='remember-me' className='ml-2 block text-sm text-gray-900'>
-                  Remember me
-                </label>
-              </div>
-
-              <div className='text-sm'>
-                <a href='#' className='font-medium text-indigo-600 hover:text-indigo-500'>
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
-
             <div>
               <Button
                 type='submit'
@@ -138,7 +127,7 @@ export default function Login() {
                 className='w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50'
               >
                 <FcGoogle className='w-5 h-5 mr-2' />
-                Sign in with Google
+                Log in with Google
               </Button>
             </div>
           </div>
@@ -149,7 +138,7 @@ export default function Login() {
                 <div className='w-full border-t border-gray-300' />
               </div>
               <div className='relative flex justify-center text-sm'>
-                <span className='px-2 bg-white text-gray-500'>Don&apos;t have an account?</span>
+                <span className='px-2 bg-white text-gray-500'>Don't have an account?</span>
               </div>
             </div>
 

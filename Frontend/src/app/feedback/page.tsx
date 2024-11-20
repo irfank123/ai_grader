@@ -41,36 +41,78 @@ export default function FeedbackPage() {
   const [error, setError] = useState<string | null>(null);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  const saveResponse = async (feedbackData: FeedbackData, questionId: string, userId: string) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/responses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: userId,
+          question_id: questionId,
+          gpt_written_feedback: feedbackData.writtenFeedback,
+          gpt_spoken_feedback: feedbackData.spokenFeedback,
+          grade: feedbackData.grade,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Response not OK:", response.status, errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      }
+
+      const result = await response.json();
+    } catch (error) {
+      console.error("Failed to save response:", error);
+      setError(
+        `Failed to save response. ${error instanceof Error ? error.message : "Please try again."}`
+      );
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
-  
+
     const loadData = async () => {
       try {
         setIsLoading(true);
+        const storedUserId = localStorage.getItem("userId");
+        if (!storedUserId) {
+          throw new Error("No user ID found");
+        }
+        setUserId(storedUserId);
+
         const questionResponse = await fetch("http://localhost:3000/api/v1/questions");
         if (!questionResponse.ok) throw new Error(`HTTP error! status: ${questionResponse.status}`);
         const questionData = await questionResponse.json();
-  
+
         const storedIndex = localStorage.getItem("currentQuestionIndex");
         if (storedIndex === null) throw new Error("No question index found");
-  
+
         const questionIndex = parseInt(storedIndex, 10);
         const currentQuestion = questionData[questionIndex];
-  
+
         if (isMounted && currentQuestion) {
           setQuestionData(currentQuestion);
-  
+
           const feedbackResponse = await fetch(`http://localhost:3000/api/v1/submit`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ questionId: currentQuestion._id }),
+            body: JSON.stringify({
+              questionId: currentQuestion._id,
+              userId: storedUserId,
+            }),
           });
-  
-          if (!feedbackResponse.ok) throw new Error(`HTTP error! status: ${feedbackResponse.status}`);
-          const feedbackData = await feedbackResponse.json();
-  
-          setFeedbackData(feedbackData);
+
+          if (feedbackResponse.ok) {
+            const feedbackData = await feedbackResponse.json();
+            setFeedbackData(feedbackData);
+            await saveResponse(feedbackData, currentQuestion._id, storedUserId);
+          } else {
+            throw new Error(`HTTP error! status: ${feedbackResponse.status}`);
+          }
         } else if (isMounted) {
           setError(`Question with index ${questionIndex} not found`);
         }
@@ -80,14 +122,13 @@ export default function FeedbackPage() {
         if (isMounted) setIsLoading(false);
       }
     };
-  
+
     loadData();
-  
+
     return () => {
-      isMounted = false; // Cleanup function to prevent state updates after unmount
+      isMounted = false;
     };
   }, []);
-  
 
   const handleTryAnotherQuestion = () => {
     const currentIndex = parseInt(localStorage.getItem("currentQuestionIndex") || "0", 10);
