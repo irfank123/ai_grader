@@ -17,6 +17,12 @@ interface QuestionData {
   ai_solution: string;
 }
 
+interface FeedbackData {
+  grade: string;
+  writtenFeedback: string;
+  spokenFeedback: string;
+}
+
 const config = {
   loader: { load: ["[tex]/html"] },
   tex: {
@@ -31,40 +37,57 @@ const config = {
 export default function FeedbackPage() {
   const router = useRouter();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
+  const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [totalQuestions, setTotalQuestions] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadQuestionData = async () => {
+    let isMounted = true;
+  
+    const loadData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/questions");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setTotalQuestions(data.length);
-
+        setIsLoading(true);
+        const questionResponse = await fetch("http://localhost:3000/api/v1/questions");
+        if (!questionResponse.ok) throw new Error(`HTTP error! status: ${questionResponse.status}`);
+        const questionData = await questionResponse.json();
+  
         const storedIndex = localStorage.getItem("currentQuestionIndex");
-        if (storedIndex === null) {
-          throw new Error("No question index found");
-        }
-
+        if (storedIndex === null) throw new Error("No question index found");
+  
         const questionIndex = parseInt(storedIndex, 10);
-
-        const currentQuestion = data[questionIndex];
-        if (currentQuestion) {
+        const currentQuestion = questionData[questionIndex];
+  
+        if (isMounted && currentQuestion) {
           setQuestionData(currentQuestion);
-        } else {
+  
+          const feedbackResponse = await fetch(`http://localhost:3000/api/v1/submit`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ questionId: currentQuestion._id }),
+          });
+  
+          if (!feedbackResponse.ok) throw new Error(`HTTP error! status: ${feedbackResponse.status}`);
+          const feedbackData = await feedbackResponse.json();
+  
+          setFeedbackData(feedbackData);
+        } else if (isMounted) {
           setError(`Question with index ${questionIndex} not found`);
         }
       } catch (error) {
-        console.error("Error loading question data:", error);
-        setError("Failed to load question data. Please try again.");
+        if (isMounted) setError("Failed to load data. Please try again.");
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
     };
-
-    loadQuestionData();
+  
+    loadData();
+  
+    return () => {
+      isMounted = false; // Cleanup function to prevent state updates after unmount
+    };
   }, []);
+  
 
   const handleTryAnotherQuestion = () => {
     const currentIndex = parseInt(localStorage.getItem("currentQuestionIndex") || "0", 10);
@@ -79,22 +102,24 @@ export default function FeedbackPage() {
       .map((line) => {
         line = line.trim();
         if (line.startsWith("\\text{") || !line.includes("\\")) {
-          // Text lines
           return line.replace("\\text{", "").replace("}", "");
         } else {
-          // Math lines
           return `${line}`;
         }
       })
       .join("\n");
   };
 
+  if (isLoading) {
+    return <div className='p-4'>Loading...</div>;
+  }
+
   if (error) {
     return <div className='text-red-500 p-4'>{error}</div>;
   }
 
-  if (!questionData) {
-    return <div className='p-4'>Loading...</div>;
+  if (!questionData || !feedbackData) {
+    return <div className='p-4'>No data available</div>;
   }
 
   return (
@@ -105,9 +130,9 @@ export default function FeedbackPage() {
             <FeedbackPageHeader />
             <div className='p-6 space-y-8'>
               <FeedbackContent
-                grade='Placeholder Grade'
-                writtenFeedback='Placeholder Written Feedback'
-                spokenFeedback='Placeholder Spoken Feedback'
+                grade={feedbackData.grade}
+                writtenFeedback={feedbackData.writtenFeedback}
+                spokenFeedback={feedbackData.spokenFeedback}
               />
               <div className='mt-6'>
                 <h3 className='text-lg font-semibold mb-2'>AI Solution:</h3>

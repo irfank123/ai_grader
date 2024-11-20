@@ -133,8 +133,8 @@ async function gradeSubmission(imagePath, transcription, question, officialAnswe
 //     });
 
 
-
-const fs = require('fs');
+const questionController = require("./questionController")
+// const fs = require('fs');
 const path = require('path');
 const { Storage } = require('@google-cloud/storage');
 
@@ -163,7 +163,7 @@ async function downloadFileFromGCS(bucketName, srcFilename) {
 }
 
 // Function to process submission
-async function processSubmission(bucketName, question, officialAnswer) {
+async function processSubmission(bucketName) {
   try {
     // Step 1: List files in the GCS bucket
     const filenames = await listFilesInBucket(bucketName);
@@ -201,19 +201,35 @@ async function processSubmission(bucketName, question, officialAnswer) {
     const transcription = await transcribeAudio(audioPath);
     image__Filename = stripExtension(imageFilename)
     // Example usage
-    const question = router.get(`/:${image__Filename}`, questionsController.getOneQuestion);
+    let question;
+    await new Promise((resolve) => {
+      questionController.getOneQuestion(
+        { params: { question_id: image__Filename } },
+        {
+          status: () => ({ json: resolve }),
+          send: (error) => {
+            console.error(error);
+            resolve(null);
+          },
+        }
+      );
+    }).then((result) => {
+      question = result;
+    });
+    // const question = router.get(`/:${image__Filename}`, questionsController.getOneQuestion)
 
-    const officialAnswer = "(-∞, -7) ∪ (-7, 6) ∪ (6, ∞)";
+    const officialAnswer = question.ai_solution;
+    // "(-∞, -7) ∪ (-7, 6) ∪ (6, ∞)";
 
     // Step 5: Grade the submission
-    const feedback = await gradeSubmission(imagePath, transcription, question, officialAnswer);
+    const feedback = await gradeSubmission(imagePath, transcription, question.question, officialAnswer);
 
     console.log("Grading Feedback:");
     console.log(JSON.stringify(feedback, null, 2));
 
     // Optionally clean up downloaded files
-    fs.unlinkSync(imagePath);
-    fs.unlinkSync(audioPath);
+    // fs.unlinkSync(imagePath);
+    // fs.unlinkSync(audioPath);
 
     return feedback;
   } catch (error) {
@@ -224,17 +240,28 @@ async function processSubmission(bucketName, question, officialAnswer) {
 
 
 
+const express = require('express');
+const router = express.Router();
 
+// processSubmission(bucketName, question, officialAnswer)
+//   .then(feedback => {
+//     console.log("Feedback:", feedback);
+//   })
+//   .catch(error => {
+//     console.error("Error:", error);
+//   });
 
+router.post('/', async (req, res) => {
+  try {
+    const feedback = await processSubmission(bucketName);
+    res.json(feedback);
+  } catch (error) {
+    console.error("Error processing submission:", error);
+    res.status(500).json({ error: "An error occurred while processing the submission" });
+  }
+});
 
-processSubmission(bucketName, question, officialAnswer)
-  .then(feedback => {
-    console.log("Feedback:", feedback);
-  })
-  .catch(error => {
-    console.error("Error:", error);
-  });
-
+module.exports = router;
 
 // // Usage
 // const imageFilename = 'path/in/gcs/image.png';
