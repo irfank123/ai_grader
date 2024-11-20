@@ -13,7 +13,7 @@ const responseRouter = require("./routes/responseRoutes");
 const userRouter = require("./routes/userRoutes");
 const audioRouter = require("./routes/audioTranscriptionRoutes");
 const authRouter = require("./routes/authRoutes");
-const uploadRouter = require("./routes/gcsRoutes");
+// const uploadRouter = require("./routes/gcsRoutes");
 const submitRouter = require("./routes/aiRoutes");
 const gcsRouter = require("./routes/gcsRoutes");
 
