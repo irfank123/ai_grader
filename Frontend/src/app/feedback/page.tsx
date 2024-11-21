@@ -87,7 +87,7 @@ export default function FeedbackPage() {
         const questionResponse = await fetch("http://localhost:3000/api/v1/questions");
         if (!questionResponse.ok) throw new Error(`HTTP error! status: ${questionResponse.status}`);
         const questionData = await questionResponse.json();
-
+        setTotalQuestions(questionData.length);
         const storedIndex = localStorage.getItem("currentQuestionIndex");
         if (storedIndex === null) throw new Error("No question index found");
 
@@ -132,7 +132,9 @@ export default function FeedbackPage() {
 
   const handleTryAnotherQuestion = () => {
     const currentIndex = parseInt(localStorage.getItem("currentQuestionIndex") || "0", 10);
+    console.log(currentIndex);
     const nextIndex = (currentIndex + 1) % totalQuestions;
+    console.log(nextIndex);
     localStorage.setItem("currentQuestionIndex", nextIndex.toString());
     router.push("/practice");
   };
