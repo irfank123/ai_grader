@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FeedbackPageHeader: React.FC = () => {
+const FeedbackPageSubheader: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6">
       <h1 className="text-3xl font-bold">Feedback Report</h1>
@@ -9,4 +9,4 @@ const FeedbackPageHeader: React.FC = () => {
   )
 }
 
-export default FeedbackPageHeader
+export default FeedbackPageSubheader

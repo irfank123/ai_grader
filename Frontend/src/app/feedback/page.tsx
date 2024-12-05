@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
 import { Button } from "@/components/ui/button";
-import FeedbackPageHeader from "@/components/FeedbackPageHeader";
+import FeedbackPageSubheader from "@/components/FeedbackPageSubheader";
 import FeedbackContent from "@/components/FeedbackContent";
 import Footer from "@/components/Footer";
+import LearnerHeader from "@/components/LearnerHeader";
+
 
 interface QuestionData {
   _id: string;
@@ -168,9 +170,10 @@ export default function FeedbackPage() {
   return (
     <MathJaxContext config={config}>
       <div className='min-h-screen bg-gray-100 flex flex-col'>
+      <LearnerHeader />
         <div className='flex-grow p-8'>
           <div className='max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden'>
-            <FeedbackPageHeader />
+            <FeedbackPageSubheader />
             <div className='p-6 space-y-8'>
               <FeedbackContent
                 grade={feedbackData.grade}

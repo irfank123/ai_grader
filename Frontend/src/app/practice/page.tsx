@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MathJaxContext, MathJax } from "better-react-mathjax";
-import PracticePageHeader from "@/components/PracticePageHeader";
+import PracticePageSubheader from "@/components/PracticePageSubheader";
 import ModeToggle from "@/components/ModeToggle";
 import Canvas from "@/components/Canvas";
 import Footer from "@/components/Footer";
 import SubmitButton from "@/components/ui/submit-button";
 import QuestionNavigation from "@/components/QuestionNavigation";
+import LearnerHeader from "@/components/LearnerHeader";
 
 interface QuestionData {
   _id: string;
@@ -140,9 +141,10 @@ export default function PracticePage() {
   return (
     <MathJaxContext>
       <div className='min-h-screen bg-gray-100 flex flex-col'>
+      <LearnerHeader />
         <div className='flex-grow p-8'>
           <div className='max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden'>
-            <PracticePageHeader />
+            <PracticePageSubheader />
 
             <div className='p-6'>
               <ModeToggle mode={mode} setMode={setMode} />
