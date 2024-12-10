@@ -185,36 +185,113 @@ export default function Canvas() {
   //   }
   // };
 
+  
   const saveAudio = async () => {
     if (audioChunksRef.current.length > 0) {
       const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
   
-      const formData = new FormData();
-      const timestamp = Date.now();
-      //formData.append('file', audioBlob, '8888recorded_audio.mp3');
-      formData.append('file', audioBlob, `${timestamp}_nopw___tryryryrecorded_audio.wav`);
+      const formData1 = new FormData();
+      const formData2 = new FormData();
+      
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().split('T')[0];
+      const formattedTime = currentDate.toTimeString().split(' ')[0].replace(/:/g, '');
+      const fileName = `recorded_audio_${formattedDate}_${formattedTime}.wav`;
+      
+      // Append to both FormData objects
+      formData1.append('file', audioBlob, fileName);
+      formData2.append('file', audioBlob, fileName);
   
       try {
-        const response = await fetch('http://localhost:3000/api/v1/upload/audio', {
-          method: 'POST',
-          body: formData,
-        });
-        downloadFile(audioBlob, 'recorded_audio.wav');
+        // Upload to both storages in parallel
+        const [regularResponse, researchResponse] = await Promise.all([
+          // Regular storage upload
+          fetch('http://localhost:3000/api/v1/upload/audio', {
+            method: 'POST',
+            body: formData1,
+          }),
+          // Research storage upload
+          fetch('http://localhost:3000/api/v1/upload/research/audio', {
+            method: 'POST',
+            body: formData2,
+          })
+        ]);
   
-        const data = await response.json();
-        if (response.ok) {
-          console.log('Audio uploaded successfully:', data.publicUrl);
-        } else {
-          console.error('Failed to upload audio:', data.message || 'Unknown error');
+        // Download the file locally
+        downloadFile(audioBlob, fileName);
+          // Log the raw responses for debugging
+        console.log('Regular Response Status:', regularResponse.status);
+        console.log('Research Response Status:', researchResponse.status);
+  
+        try {
+          // Try to parse responses individually to identify which one fails
+          const regularData = await regularResponse.text(); // Use text() instead of json()
+          const researchData = await researchResponse.text();
+          
+          console.log('Regular Response:', regularData);
+          console.log('Research Response:', researchData);
+  
+          // Try parsing the text as JSON
+          const regularJson = regularData ? JSON.parse(regularData) : null;
+          const researchJson = researchData ? JSON.parse(researchData) : null;
+  
+          if (regularResponse.ok && researchResponse.ok) {
+            console.log('Regular storage upload:', regularJson?.publicUrl);
+            console.log('Research storage upload:', researchJson?.publicUrl);
+          } else {
+            console.error('Failed to upload to one or more locations:', {
+              regular: regularResponse.ok ? 'Success' : 'Failed',
+              research: researchResponse.ok ? 'Success' : 'Failed',
+              regularStatus: regularResponse.status,
+              researchStatus: researchResponse.status
+            });
+          }
+        } catch (parseError) {
+          console.error('Error parsing response:', parseError);
         }
       } catch (error) {
-        console.error('Error uploading audio:', error);
+        console.error('Error making upload request:', error);
       }
     } else {
       console.log('No audio recorded yet');
     }
-
+  
   };
+  // const saveAudio = async () => {
+  //   if (audioChunksRef.current.length > 0) {
+  //     const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+  
+  //     const formData = new FormData();
+  //     //const timestamp = Date.now();
+  //     const currentDate = new Date();
+  //     const formattedDate = currentDate.toISOString().split('T')[0];
+  //     const formattedTime = currentDate.toTimeString().split(' ')[0].replace(/:/g, '');
+  //     //formData.append('file', audioBlob, '8888recorded_audio.mp3');
+
+  //     const fileName = `recorded_audio_${formattedDate}_${formattedTime}.wav`;
+  //     formData.append('file', audioBlob, fileName);
+  
+  //     try {
+  //       const response = await fetch('http://localhost:3000/api/v1/upload/audio', {
+  //         method: 'POST',
+  //         body: formData,
+  //       });
+  //       downloadFile(audioBlob, fileName);
+  
+  //       const data = await response.json();
+  //       if (response.ok) {
+  //         console.log('Audio uploaded successfully:', data.publicUrl);
+  //       } else {
+  //         console.error('Failed to upload audio:', data.message || 'Unknown error');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error uploading audio:', error);
+  //     }
+  //   } else {
+  //     console.log('No audio recorded yet');
+  //   }
+
+  // };
   
 
   // const saveImage = () => {

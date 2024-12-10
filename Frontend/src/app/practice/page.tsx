@@ -66,36 +66,58 @@ export default function PracticePage() {
   //   localStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
   //   router.push("/feedback");
   // };
+
+
   const handleSubmit = async () => {
-    // Reference to the Canvas component
     const canvasElement = document.querySelector('canvas');
-  
+    
     if (canvasElement) {
-      // Convert the canvas content to a Blob
       canvasElement.toBlob(async (blob) => {
         if (blob) {
-          const formData = new FormData();
-          console.log(currentQuestionIndex);
+          // Create two separate FormData objects
+          const formData1 = new FormData();
+          const formData2 = new FormData();
           
-          formData.append('file', blob, `${questions[currentQuestionIndex]._id}.png`); // Append the Blob as a file
+          const currentDate = new Date();
+          const formattedDate = currentDate.toISOString().split('T')[0];
+          const formattedTime = currentDate.toTimeString().split(' ')[0].replace(/:/g, '');
+          const fileName = `${questions[currentQuestionIndex]._id}_${formattedDate}_${formattedTime}.png`;
+          
+          // Append the same file to both FormData objects
+          formData1.append('file', blob, fileName);
+          formData2.append('file', blob, fileName);
   
           try {
-            // Send the canvas image to the backend
-            const response = await fetch('http://localhost:3000/api/v1/upload/image', {
-              method: 'POST',
-              body: formData,
-            });
+            // Upload to both storages in parallel
+            const [regularUpload, researchUpload] = await Promise.all([
+              // Regular storage upload
+              fetch('http://localhost:3000/api/v1/upload/image', {
+                method: 'POST',
+                body: formData1,
+              }),
+              // Research storage upload
+              fetch('http://localhost:3000/api/v1/upload/research/image', {
+                method: 'POST',
+                body: formData2,
+              })
+            ]);
   
-            const data = await response.json();
+            // Check both responses
+            const [regularData, researchData] = await Promise.all([
+              regularUpload.json(),
+              researchUpload.json()
+            ]);
   
-            if (response.ok) {
-              console.log('Image uploaded successfully:', data.publicUrl);
-              // Store the current question index
+            if (regularUpload.ok && researchUpload.ok) {
+              console.log('Regular storage upload:', regularData.publicUrl);
+              console.log('Research storage upload:', researchData.publicUrl);
               localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
-              // Redirect to feedback page
               router.push('/feedback');
             } else {
-              console.error('Failed to upload image:', data.message || 'Unknown error');
+              console.error('Failed to upload to one or more locations:', {
+                regular: regularUpload.ok ? 'Success' : 'Failed',
+                research: researchUpload.ok ? 'Success' : 'Failed'
+              });
             }
           } catch (error) {
             console.error('Error uploading image:', error);
@@ -108,6 +130,61 @@ export default function PracticePage() {
       console.error('Canvas element not found.');
     }
   };
+
+
+
+
+
+
+
+  // const handleSubmit = async () => {
+  //   // Reference to the Canvas component
+  //   const canvasElement = document.querySelector('canvas');
+  
+  //   if (canvasElement) {
+  //     // Convert the canvas content to a Blob
+  //     canvasElement.toBlob(async (blob) => {
+  //       if (blob) {
+  //         const formData = new FormData();
+  //         console.log(currentQuestionIndex);
+  //         const currentDate = new Date();
+  //         const formattedDate = currentDate.toISOString().split('T')[0]; // e.g., "2024-12-09"
+  //         const formattedTime = currentDate.toTimeString().split(' ')[0].replace(/:/g, ''); // e.g., "101530"
+
+  //         const fileName = `${questions[currentQuestionIndex]._id}_${formattedDate}_${formattedTime}.png`;
+
+          
+  //         formData.append('file', blob, fileName); // Append the Blob as a file
+  
+  //         try {
+  //           // Send the canvas image to the backend
+  //           const response = await fetch('http://localhost:3000/api/v1/upload/image', {
+  //             method: 'POST',
+  //             body: formData,
+  //           });
+  
+  //           const data = await response.json();
+  
+  //           if (response.ok) {
+  //             console.log('Image uploaded successfully:', data.publicUrl);
+  //             // Store the current question index
+  //             localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
+  //             // Redirect to feedback page
+  //             router.push('/feedback');
+  //           } else {
+  //             console.error('Failed to upload image:', data.message || 'Unknown error');
+  //           }
+  //         } catch (error) {
+  //           console.error('Error uploading image:', error);
+  //         }
+  //       } else {
+  //         console.error('Failed to retrieve canvas content.');
+  //       }
+  //     }, 'image/png');
+  //   } else {
+  //     console.error('Canvas element not found.');
+  //   }
+  // };
   
 
   const handleNextQuestion = () => {

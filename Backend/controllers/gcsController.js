@@ -87,6 +87,97 @@ async function uploadToGCS(file, res) {
   }
 }
 
+async function uploadToResearchStorage(file, res) {
+  try {
+    if (!file) {
+      return res.status(400).send("No file uploaded.");
+    }
+
+    // Construct the full path with the directory
+    const directoryPath = 'future_research_storage/';
+    const fullPath = `${directoryPath}${file.originalname}`;
+    
+    const blob = bucket.file(fullPath);
+    const blobStream = blob.createWriteStream({
+      resumable: false,
+      contentType: file.mimetype,
+    });
+
+    blobStream.on("error", (err) => {
+      console.error('Upload error:', err);
+      res.status(500).send({ message: err.message });
+    });
+
+    blobStream.on("finish", () => {
+      const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fullPath}`;
+      res.status(200).send({
+        message: 'Upload successful',
+        fileName: file.originalname,
+        storagePath: fullPath,
+        publicUrl
+      });
+    });
+
+    blobStream.end(file.buffer);
+  } catch (error) {
+    console.error('Upload handler error:', error);
+    res.status(500).send({ 
+      message: 'Failed to process upload',
+      error: error.message 
+    });
+  }
+}
+
+
+
+
+
+
+
+async function deleteAllFilesfromRoot() {
+  const bucketName = 'ai-grader-storage';
+  const bucket = storage.bucket(bucketName);
+  const directoryToSkip = 'future_research_storage/';
+
+  try {
+    const [files] = await bucket.getFiles();
+    console.log(`Found ${files.length} files in bucket ${bucketName}.`);
+
+    for (const file of files) {
+      // Skip the specified directory and its contents
+      if (file.name.startsWith(directoryToSkip)) {
+        console.log(`Skipping deletion of file in protected directory: ${file.name}`);
+        continue;
+      }
+
+      try {
+        await file.delete();
+        console.log(`Deleted file: ${file.name}`);
+      } catch (error) {
+        console.error(`Error deleting file ${file.name}:`, error);
+      }
+    }
+
+    console.log('File deletion completed (protected directory preserved).');
+  } catch (error) {
+    console.error('Error listing or deleting files:', error);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // Route for image uploads
 // router.post('/upload/image', upload.single('file'), (req, res) => {
 //   uploadToGCS(req.file, res);
@@ -100,5 +191,7 @@ async function uploadToGCS(file, res) {
 // module.exports = router;
 module.exports = {
   uploadToGCS,
+  uploadToResearchStorage,
+  deleteAllFilesfromRoot,
   upload,
 };
