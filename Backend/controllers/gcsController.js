@@ -47,10 +47,14 @@ const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
 const path = require("path");
 
-// const router = express.Router();
-const storage = new Storage({
-  keyFilename: "/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json",
-});
+// // const router = express.Router();
+// const storage = new Storage({
+//   keyFilename: "/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json",
+// });
+
+
+const storage = new Storage({credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)});
+
 const bucket = storage.bucket("ai-grader-storage");
 
 // Multer configuration for memory storage

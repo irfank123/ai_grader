@@ -163,9 +163,13 @@ const responseController = require("./responseController");
 const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 
-const storage = new Storage({
-  keyFilename: "/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json",
-});
+// const storage = new Storage({
+//   keyFilename: "/Users/irfank/Downloads/ppds-f-24-470a0a2126e6.json",
+// });
+
+const storage = new Storage({credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)});
+
+
 
 // // Function to list files in the GCS bucket
 // async function listFilesInBucket(bucketName) {
@@ -313,8 +317,8 @@ async function processSubmission(bucketName) {
     console.log(JSON.stringify(feedback, null, 2));
 
     // Optionally clean up downloaded files
-    // fs.unlinkSync(imagePath);
-    // fs.unlinkSync(audioPath);
+    fs.unlinkSync(imagePath);
+    fs.unlinkSync(audioPath);
     ////HHEEHHRHRHHEHHE
 
     await deleteAllFilesfromRoot();
